@@ -1,0 +1,12 @@
+C:\Users\vdnku\Documents\Tladi\CSharp_Studies\ECommerceManagementSystem\ECommerceManagementSystem.Tests\bin\Debug\net10.0\ECommerceManagementSystem.Tests.deps.json
+C:\Users\vdnku\Documents\Tladi\CSharp_Studies\ECommerceManagementSystem\ECommerceManagementSystem.Tests\bin\Debug\net10.0\ECommerceManagementSystem.Tests.dll
+C:\Users\vdnku\Documents\Tladi\CSharp_Studies\ECommerceManagementSystem\ECommerceManagementSystem.Tests\bin\Debug\net10.0\ECommerceManagementSystem.Tests.pdb
+C:\Users\vdnku\Documents\Tladi\CSharp_Studies\ECommerceManagementSystem\ECommerceManagementSystem.Tests\obj\Debug\net10.0\ECommerceManagementSystem.Tests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\vdnku\Documents\Tladi\CSharp_Studies\ECommerceManagementSystem\ECommerceManagementSystem.Tests\obj\Debug\net10.0\ECommerceManagementSystem.Tests.AssemblyInfoInputs.cache
+C:\Users\vdnku\Documents\Tladi\CSharp_Studies\ECommerceManagementSystem\ECommerceManagementSystem.Tests\obj\Debug\net10.0\ECommerceManagementSystem.Tests.AssemblyInfo.cs
+C:\Users\vdnku\Documents\Tladi\CSharp_Studies\ECommerceManagementSystem\ECommerceManagementSystem.Tests\obj\Debug\net10.0\ECommerceManagementSystem.Tests.csproj.CoreCompileInputs.cache
+C:\Users\vdnku\Documents\Tladi\CSharp_Studies\ECommerceManagementSystem\ECommerceManagementSystem.Tests\obj\Debug\net10.0\ECommerceManagementSystem.Tests.dll
+C:\Users\vdnku\Documents\Tladi\CSharp_Studies\ECommerceManagementSystem\ECommerceManagementSystem.Tests\obj\Debug\net10.0\refint\ECommerceManagementSystem.Tests.dll
+C:\Users\vdnku\Documents\Tladi\CSharp_Studies\ECommerceManagementSystem\ECommerceManagementSystem.Tests\obj\Debug\net10.0\ECommerceManagementSystem.Tests.pdb
+C:\Users\vdnku\Documents\Tladi\CSharp_Studies\ECommerceManagementSystem\ECommerceManagementSystem.Tests\obj\Debug\net10.0\ref\ECommerceManagementSystem.Tests.dll
+C:\Users\vdnku\Documents\Tladi\CSharp_Studies\ECommerceManagementSystem\ECommerceManagementSystem.Tests\obj\Debug\net10.0\ECommerc.4E28FF65.Up2Date

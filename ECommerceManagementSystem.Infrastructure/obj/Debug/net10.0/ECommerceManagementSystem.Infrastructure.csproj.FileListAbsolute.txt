@@ -1,0 +1,12 @@
+C:\Users\vdnku\Documents\Tladi\CSharp_Studies\ECommerceManagementSystem\ECommerceManagementSystem.Infrastructure\bin\Debug\net10.0\ECommerceManagementSystem.Infrastructure.deps.json
+C:\Users\vdnku\Documents\Tladi\CSharp_Studies\ECommerceManagementSystem\ECommerceManagementSystem.Infrastructure\bin\Debug\net10.0\ECommerceManagementSystem.Infrastructure.dll
+C:\Users\vdnku\Documents\Tladi\CSharp_Studies\ECommerceManagementSystem\ECommerceManagementSystem.Infrastructure\bin\Debug\net10.0\ECommerceManagementSystem.Infrastructure.pdb
+C:\Users\vdnku\Documents\Tladi\CSharp_Studies\ECommerceManagementSystem\ECommerceManagementSystem.Infrastructure\obj\Debug\net10.0\ECommerceManagementSystem.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\vdnku\Documents\Tladi\CSharp_Studies\ECommerceManagementSystem\ECommerceManagementSystem.Infrastructure\obj\Debug\net10.0\ECommerceManagementSystem.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\vdnku\Documents\Tladi\CSharp_Studies\ECommerceManagementSystem\ECommerceManagementSystem.Infrastructure\obj\Debug\net10.0\ECommerceManagementSystem.Infrastructure.AssemblyInfo.cs
+C:\Users\vdnku\Documents\Tladi\CSharp_Studies\ECommerceManagementSystem\ECommerceManagementSystem.Infrastructure\obj\Debug\net10.0\ECommerceManagementSystem.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\vdnku\Documents\Tladi\CSharp_Studies\ECommerceManagementSystem\ECommerceManagementSystem.Infrastructure\obj\Debug\net10.0\ECommerceManagementSystem.Infrastructure.dll
+C:\Users\vdnku\Documents\Tladi\CSharp_Studies\ECommerceManagementSystem\ECommerceManagementSystem.Infrastructure\obj\Debug\net10.0\refint\ECommerceManagementSystem.Infrastructure.dll
+C:\Users\vdnku\Documents\Tladi\CSharp_Studies\ECommerceManagementSystem\ECommerceManagementSystem.Infrastructure\obj\Debug\net10.0\ECommerceManagementSystem.Infrastructure.pdb
+C:\Users\vdnku\Documents\Tladi\CSharp_Studies\ECommerceManagementSystem\ECommerceManagementSystem.Infrastructure\obj\Debug\net10.0\ref\ECommerceManagementSystem.Infrastructure.dll
+C:\Users\vdnku\Documents\Tladi\CSharp_Studies\ECommerceManagementSystem\ECommerceManagementSystem.Infrastructure\obj\Debug\net10.0\ECommerc.B6F0FC69.Up2Date

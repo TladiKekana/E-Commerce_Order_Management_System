@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "aKqZCC2Ywlg=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\vdnku\\Documents\\Tladi\\Projects\\E-Commerce_Order_Management_System\\ECommerceManagementSystem.API\\ECommerceManagementSystem.API.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\vdnku\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.12\\microsoft.aspnetcore.openapi.10.0.12.nupkg.sha512",
+    "C:\\Users\\vdnku\\.nuget\\packages\\microsoft.openapi\\2.12.0\\microsoft.openapi.2.12.0.nupkg.sha512"
+  ],
+  "logs": []
+}

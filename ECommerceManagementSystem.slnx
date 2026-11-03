@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="ECommerceManagementSystem.API/ECommerceManagementSystem.API.csproj" Id="93fd8f67-e3e1-4728-9198-a405cf34393a" />
+  <Project Path="ECommerceManagementSystem.Application/ECommerceManagementSystem.Application.csproj" Id="84c8ea1d-5175-4ffc-a23e-3cc60729454f" />
+  <Project Path="ECommerceManagementSystem.Domain/ECommerceManagementSystem.Domain.csproj" Id="82aec930-695f-4343-977d-000ca66cb319" />
+  <Project Path="ECommerceManagementSystem.Infrastructure/ECommerceManagementSystem.Infrastructure.csproj" Id="a03ab1bd-2996-46af-b53b-e2ab2a5549d8" />
+  <Project Path="ECommerceManagementSystem.Tests/ECommerceManagementSystem.Tests.csproj" Id="e0bf4a59-1185-4db0-8d89-43157f35d494" />
+</Solution>
