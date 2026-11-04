@@ -8,7 +8,9 @@ namespace ECommerceManagementSystem.Infrastructure.Models
     {
         public int Category_Id { get; set; }
         public string Name { get; set; } = string.Empty;
-        public int Parent_Category_Id { get; set; }
-        public virtual ICollection<Product> Products { get; set; } = new List<Product>();
+        //public int Parent_Category_Id { get; set; }
+
+        // Navigation Properties
+        public ICollection<Product> Products;
     }
 }

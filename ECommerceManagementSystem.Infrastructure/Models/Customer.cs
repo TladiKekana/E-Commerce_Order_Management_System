@@ -12,5 +12,8 @@ namespace ECommerceManagementSystem.Infrastructure.Models
         public string? Email { get; set; }
         public int Phone { get; set; }
         public DateTime Registration_Time { get; set; }
+
+        // Navigation Properties
+        public ICollection<Order> Orders { get; set; }
     }
 }

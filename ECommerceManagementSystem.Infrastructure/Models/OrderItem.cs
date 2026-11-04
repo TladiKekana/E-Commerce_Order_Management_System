@@ -11,5 +11,9 @@ namespace ECommerceManagementSystem.Infrastructure.Models
         public int Product_Id { get; set; }
         public int Quantity { get; set; }
         public Decimal Unit_Price { get; set; }
+
+        // Navigation Properties
+        public Product Product { get; set; }
+        public Order Order { get; set; }
     }
 }

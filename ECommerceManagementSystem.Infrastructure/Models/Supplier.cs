@@ -14,6 +14,6 @@ namespace ECommerceManagementSystem.Infrastructure.Models
         public string? Address { get; set; }
 
         //Navigation Properties
-        public virtual ICollection<Product> Products { get; set; } = new List<Product>();
+        public ICollection<ProductSupplier> ProductSuppliers;
     }
 }
