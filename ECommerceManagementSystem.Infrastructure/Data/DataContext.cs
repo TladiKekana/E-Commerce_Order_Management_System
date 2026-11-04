@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ECommerceManagementSystem.Infrastructure.Data
 {
-    internal class DataContext : DbContext
+    public class DataContext : DbContext
     {
         public DataContext(DbContextOptions options) : base(options) {}
 

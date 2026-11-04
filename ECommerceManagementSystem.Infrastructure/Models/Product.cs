@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ECommerceManagementSystem.Infrastructure.Models
 {
-    internal class Product
+    public class Product
     {
         public int Product_Id { get; set; }
         public int Category_Id { get; set; }
@@ -16,8 +16,8 @@ namespace ECommerceManagementSystem.Infrastructure.Models
 
         //Navigation Properties
         public virtual Category Category { get; set; }
-        public ICollection<Supplier> Suppliers { get; set; }
+        public ICollection<Supplier> Suppliers { get; set; } = new List<Supplier>();
         public virtual OrderItem OrderItem { get; set; }
-        public ICollection<ProductSupplier> ProductSuppliers { get; set; }
+        public ICollection<ProductSupplier> ProductSuppliers { get; set; } = new List<ProductSupplier>();
     }
 }

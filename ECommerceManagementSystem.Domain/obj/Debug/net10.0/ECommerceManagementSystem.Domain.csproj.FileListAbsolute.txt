@@ -10,3 +10,16 @@ C:\Users\vdnku\Documents\Tladi\CSharp_Studies\ECommerceManagementSystem\ECommerc
 C:\Users\vdnku\Documents\Tladi\CSharp_Studies\ECommerceManagementSystem\ECommerceManagementSystem.Domain\obj\Debug\net10.0\ECommerceManagementSystem.Domain.pdb
 C:\Users\vdnku\Documents\Tladi\CSharp_Studies\ECommerceManagementSystem\ECommerceManagementSystem.Domain\obj\Debug\net10.0\ref\ECommerceManagementSystem.Domain.dll
 C:\Users\vdnku\Documents\Tladi\CSharp_Studies\ECommerceManagementSystem\ECommerceManagementSystem.Domain\obj\Debug\net10.0\ECommerc.FF3AEA31.Up2Date
+C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\ECommerceManagementSystem.Domain\bin\Debug\net10.0\ECommerceManagementSystem.Domain.deps.json
+C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\ECommerceManagementSystem.Domain\bin\Debug\net10.0\ECommerceManagementSystem.Domain.dll
+C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\ECommerceManagementSystem.Domain\bin\Debug\net10.0\ECommerceManagementSystem.Domain.pdb
+C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\ECommerceManagementSystem.Domain\obj\Debug\net10.0\ECommerceManagementSystem.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\ECommerceManagementSystem.Domain\obj\Debug\net10.0\ECommerceManagementSystem.Domain.AssemblyInfoInputs.cache
+C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\ECommerceManagementSystem.Domain\obj\Debug\net10.0\ECommerceManagementSystem.Domain.AssemblyInfo.cs
+C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\ECommerceManagementSystem.Domain\obj\Debug\net10.0\ECommerceManagementSystem.Domain.csproj.CoreCompileInputs.cache
+C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\ECommerceManagementSystem.Domain\obj\Debug\net10.0\ECommerceManagementSystem.Domain.sourcelink.json
+C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\ECommerceManagementSystem.Domain\obj\Debug\net10.0\ECommerceManagementSystem.Domain.dll
+C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\ECommerceManagementSystem.Domain\obj\Debug\net10.0\refint\ECommerceManagementSystem.Domain.dll
+C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\ECommerceManagementSystem.Domain\obj\Debug\net10.0\ECommerceManagementSystem.Domain.pdb
+C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\ECommerceManagementSystem.Domain\obj\Debug\net10.0\ref\ECommerceManagementSystem.Domain.dll
+C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\ECommerceManagementSystem.Domain\obj\Debug\net10.0\ECommerc.FF3AEA31.Up2Date

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ECommerceManagementSystem.Infrastructure.Models
 {
-    internal class Supplier
+    public class Supplier
     {
         public int Supplier_Id { get; set; }
         public string Name { get; set; } = string.Empty;
@@ -14,6 +14,6 @@ namespace ECommerceManagementSystem.Infrastructure.Models
         public string? Address { get; set; }
 
         //Navigation Properties
-        public ICollection<ProductSupplier> ProductSuppliers;
+        public ICollection<ProductSupplier> ProductSuppliers { get; set; } = new List<ProductSupplier>();
     }
 }

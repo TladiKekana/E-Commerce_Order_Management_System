@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ECommerceManagementSystem.Infrastructure.Models
 {
-    internal class Customer
+    public class Customer
     {
         public int Customer_Id { get; set; }
         public string First_Name { get; set; } = string.Empty;
@@ -14,6 +14,6 @@ namespace ECommerceManagementSystem.Infrastructure.Models
         public DateTime Registration_Time { get; set; }
 
         // Navigation Properties
-        public ICollection<Order> Orders { get; set; }
+        public ICollection<Order> Orders { get; set; } = new List<Order>();
     }
 }

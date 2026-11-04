@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ECommerceManagementSystem.Infrastructure.Models
 {
-    internal class OrderItem
+    public class OrderItem
     {
         public int Order_Item_Id { get; set; }
         public int Order_Id { get; set; }

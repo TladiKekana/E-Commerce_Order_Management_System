@@ -10,3 +10,16 @@ C:\Users\vdnku\Documents\Tladi\CSharp_Studies\ECommerceManagementSystem\ECommerc
 C:\Users\vdnku\Documents\Tladi\CSharp_Studies\ECommerceManagementSystem\ECommerceManagementSystem.Application\obj\Debug\net10.0\ECommerceManagementSystem.Application.pdb
 C:\Users\vdnku\Documents\Tladi\CSharp_Studies\ECommerceManagementSystem\ECommerceManagementSystem.Application\obj\Debug\net10.0\ref\ECommerceManagementSystem.Application.dll
 C:\Users\vdnku\Documents\Tladi\CSharp_Studies\ECommerceManagementSystem\ECommerceManagementSystem.Application\obj\Debug\net10.0\ECommerc.F6D6935B.Up2Date
+C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\ECommerceManagementSystem.Application\bin\Debug\net10.0\ECommerceManagementSystem.Application.deps.json
+C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\ECommerceManagementSystem.Application\bin\Debug\net10.0\ECommerceManagementSystem.Application.dll
+C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\ECommerceManagementSystem.Application\bin\Debug\net10.0\ECommerceManagementSystem.Application.pdb
+C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\ECommerceManagementSystem.Application\obj\Debug\net10.0\ECommerceManagementSystem.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\ECommerceManagementSystem.Application\obj\Debug\net10.0\ECommerceManagementSystem.Application.AssemblyInfoInputs.cache
+C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\ECommerceManagementSystem.Application\obj\Debug\net10.0\ECommerceManagementSystem.Application.AssemblyInfo.cs
+C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\ECommerceManagementSystem.Application\obj\Debug\net10.0\ECommerceManagementSystem.Application.csproj.CoreCompileInputs.cache
+C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\ECommerceManagementSystem.Application\obj\Debug\net10.0\ECommerceManagementSystem.Application.sourcelink.json
+C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\ECommerceManagementSystem.Application\obj\Debug\net10.0\ECommerceManagementSystem.Application.dll
+C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\ECommerceManagementSystem.Application\obj\Debug\net10.0\refint\ECommerceManagementSystem.Application.dll
+C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\ECommerceManagementSystem.Application\obj\Debug\net10.0\ECommerceManagementSystem.Application.pdb
+C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\ECommerceManagementSystem.Application\obj\Debug\net10.0\ref\ECommerceManagementSystem.Application.dll
+C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\ECommerceManagementSystem.Application\obj\Debug\net10.0\ECommerc.F6D6935B.Up2Date

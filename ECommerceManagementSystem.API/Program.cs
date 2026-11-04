@@ -1,4 +1,7 @@
 
+using ECommerceManagementSystem.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace ECommerceManagementSystem.API
 {
     public class Program
@@ -12,6 +15,11 @@ namespace ECommerceManagementSystem.API
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
+
+            builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(
+                    builder.Configuration.GetConnectionString("DefaultConnection"),
+                    b => b.MigrationsAssembly("ECommerceManagementSystem.API")
+                ));
 
             var app = builder.Build();
 

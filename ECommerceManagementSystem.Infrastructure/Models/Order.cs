@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ECommerceManagementSystem.Infrastructure.Models
 {
-    internal class Order
+    public class Order
     {
         public int Order_Id { get; set; }
         public int Customer_Id { get; set; }
@@ -13,7 +13,7 @@ namespace ECommerceManagementSystem.Infrastructure.Models
         public Decimal Total_Amount { get; set; }
 
         // Navigation Properties
-        public ICollection<OrderItem> OrderItems { get; set; }
+        public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
         public Customer Customer { get; set; }
     }
 }

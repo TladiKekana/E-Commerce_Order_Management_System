@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ECommerceManagementSystem.Infrastructure.Models
 {
-    internal class ProductSupplier
+    public class ProductSupplier
     {
         public int ProcuctSupplier_Id { get; set; }
         public int Product_Id { get; set; }
