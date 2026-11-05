@@ -1,4 +1,5 @@
 
+using ECommerceManagementSystem.API.Extensions;
 using ECommerceManagementSystem.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,6 +21,8 @@ namespace ECommerceManagementSystem.API
                     builder.Configuration.GetConnectionString("DefaultConnection"),
                     b => b.MigrationsAssembly("ECommerceManagementSystem.API")
                 ));
+
+            builder.Services.AddApplicationServices();
 
             var app = builder.Build();
 

@@ -9,8 +9,6 @@
   <ItemGroup>
     <Folder Include="Messaging\" />
     <Folder Include="Identity\" />
-    <Folder Include="Services\" />
-    <Folder Include="Repositories\" />
     <Folder Include="Persistence\" />
   </ItemGroup>
 
