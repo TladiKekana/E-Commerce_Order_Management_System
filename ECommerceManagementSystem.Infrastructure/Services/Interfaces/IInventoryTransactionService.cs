@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ECommerceManagementSystem.Infrastructure.Services.Interfaces
 {
-    public interface IInventoryTrasnsactionService
+    public interface IInventoryTransactionService
     {
         Task<Inventory_Transaction> GetInventoryTransactionAsync(int id);
         Task<List<Inventory_Transaction>> GetInventoryTransactionsAsync();

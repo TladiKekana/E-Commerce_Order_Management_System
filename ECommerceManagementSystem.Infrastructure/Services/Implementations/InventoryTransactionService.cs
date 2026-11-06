@@ -7,7 +7,7 @@ using System.Text;
 
 namespace ECommerceManagementSystem.Infrastructure.Services.Implementations
 {
-    public class InventoryTransactionService : IInventoryTrasnsactionService
+    public class InventoryTransactionService : IInventoryTransactionService
     {
         private readonly IInventoryTransactionRepository _repository;
 
