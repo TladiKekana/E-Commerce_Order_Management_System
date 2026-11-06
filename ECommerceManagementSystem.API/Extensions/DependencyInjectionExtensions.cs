@@ -11,20 +11,18 @@ namespace ECommerceManagementSystem.API.Extensions
         {
             // Register Repositories
             services.AddScoped<ICategoryRepository, CategoryRepository>();
-            services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IOrderItemRepository, OrderItemRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
-            services.AddScoped<IProductSupplierRepository, ProductSupplierRepository>();
             services.AddScoped<ISupplierRepository, SupplierRepository>();
 
             // Register Business Logic Services
             services.AddScoped<ICategoryService, CategoryService>();
-            services.AddScoped<ICustomerService, CustomerService>();
+            services.AddScoped<IUserService, UserService>();
             services.AddScoped<IOrderItemService, OrderItemService>();
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IProductService, ProductService>();
-            services.AddScoped<IProductSupplierService, ProductSupplierService>();
             services.AddScoped<ISupplierService, SupplierService>();
 
             return services;
