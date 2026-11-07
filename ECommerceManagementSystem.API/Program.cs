@@ -2,6 +2,7 @@
 using ECommerceManagementSystem.API.Extensions;
 using ECommerceManagementSystem.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using Scalar.AspNetCore;
 
 namespace ECommerceManagementSystem.API
 {
@@ -30,6 +31,7 @@ namespace ECommerceManagementSystem.API
             if (app.Environment.IsDevelopment())
             {
                 app.MapOpenApi();
+                app.MapScalarApiReference();
             }
 
             app.UseHttpsRedirection();
