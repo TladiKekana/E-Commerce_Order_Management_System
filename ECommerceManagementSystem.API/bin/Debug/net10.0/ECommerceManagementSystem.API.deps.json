@@ -840,8 +840,17 @@
           }
         }
       },
+      "ECommerceManagementSystem.Domain/1.0.0": {
+        "runtime": {
+          "ECommerceManagementSystem.Domain.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "ECommerceManagementSystem.Infrastructure/1.0.0": {
         "dependencies": {
+          "ECommerceManagementSystem.Domain": "1.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "10.0.14",
           "System.Security.Cryptography.Pkcs": "10.0.14"
         },
@@ -1195,6 +1204,11 @@
       "sha512": "sha512-s8yUYuYYu+PAwvBdhLG1KyrGrk9gkYeuPxfAsXsTqqWyepwSyEw8hAaflW4nO98NG52YpYI1am2+9o+79h2RtQ==",
       "path": "system.security.cryptography.protecteddata/9.0.11",
       "hashPath": "system.security.cryptography.protecteddata.9.0.11.nupkg.sha512"
+    },
+    "ECommerceManagementSystem.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "ECommerceManagementSystem.Infrastructure/1.0.0": {
       "type": "project",

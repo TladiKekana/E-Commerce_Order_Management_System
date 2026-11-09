@@ -1,5 +1,5 @@
 ﻿using ECommerceManagementSystem.Infrastructure.Data;
-using ECommerceManagementSystem.Infrastructure.Models;
+using ECommerceManagementSystem.Domain.Entities;
 using ECommerceManagementSystem.Infrastructure.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;

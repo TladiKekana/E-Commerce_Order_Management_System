@@ -1127,10 +1127,21 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
+      "ECommerceManagementSystem.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/ECommerceManagementSystem.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ECommerceManagementSystem.Domain.dll": {}
+        }
+      },
       "ECommerceManagementSystem.Infrastructure/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
         "dependencies": {
+          "ECommerceManagementSystem.Domain": "1.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "10.0.14",
           "System.Security.Cryptography.Pkcs": "10.0.14"
         },
@@ -3258,6 +3269,11 @@
         "system.security.cryptography.protecteddata.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "ECommerceManagementSystem.Domain/1.0.0": {
+      "type": "project",
+      "path": "../ECommerceManagementSystem.Domain/ECommerceManagementSystem.Domain.csproj",
+      "msbuildProject": "../ECommerceManagementSystem.Domain/ECommerceManagementSystem.Domain.csproj"
     },
     "ECommerceManagementSystem.Infrastructure/1.0.0": {
       "type": "project",

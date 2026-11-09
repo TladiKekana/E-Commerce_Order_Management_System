@@ -26,3 +26,5 @@ C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\EComm
 C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\ECommerceManagementSystem.Infrastructure\obj\Debug\net10.0\ECommerceManagementSystem.Infrastructure.genruntimeconfig.cache
 C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\ECommerceManagementSystem.Infrastructure\obj\Debug\net10.0\ref\ECommerceManagementSystem.Infrastructure.dll
 C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\ECommerceManagementSystem.Infrastructure\obj\Debug\net10.0\ECommerc.B6F0FC69.Up2Date
+C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\ECommerceManagementSystem.Infrastructure\bin\Debug\net10.0\ECommerceManagementSystem.Domain.dll
+C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\ECommerceManagementSystem.Infrastructure\bin\Debug\net10.0\ECommerceManagementSystem.Domain.pdb

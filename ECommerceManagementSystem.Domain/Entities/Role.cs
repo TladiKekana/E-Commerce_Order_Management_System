@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ECommerceManagementSystem.Infrastructure.Models
+namespace ECommerceManagementSystem.Domain.Entities
 {
     public class Role
     {

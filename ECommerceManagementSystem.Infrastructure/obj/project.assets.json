@@ -1292,6 +1292,16 @@
         "build": {
           "buildTransitive/net8.0/_._": {}
         }
+      },
+      "ECommerceManagementSystem.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/ECommerceManagementSystem.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ECommerceManagementSystem.Domain.dll": {}
+        }
       }
     }
   },
@@ -3716,10 +3726,16 @@
         "system.security.cryptography.protecteddata.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "ECommerceManagementSystem.Domain/1.0.0": {
+      "type": "project",
+      "path": "../ECommerceManagementSystem.Domain/ECommerceManagementSystem.Domain.csproj",
+      "msbuildProject": "../ECommerceManagementSystem.Domain/ECommerceManagementSystem.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net10.0": [
+      "ECommerceManagementSystem.Domain >= 1.0.0",
       "Microsoft.EntityFrameworkCore.Design >= 10.0.14",
       "Microsoft.EntityFrameworkCore.SqlServer >= 10.0.14",
       "Microsoft.EntityFrameworkCore.Tools >= 10.0.14",
@@ -3758,7 +3774,11 @@
         "net10.0": {
           "framework": "net10.0",
           "targetAlias": "net10.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\vdnku\\Documents\\Tladi\\Projects\\E-Commerce_Order_Management_System\\ECommerceManagementSystem.Domain\\ECommerceManagementSystem.Domain.csproj": {
+              "projectPath": "C:\\Users\\vdnku\\Documents\\Tladi\\Projects\\E-Commerce_Order_Management_System\\ECommerceManagementSystem.Domain\\ECommerceManagementSystem.Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

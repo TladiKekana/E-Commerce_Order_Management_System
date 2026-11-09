@@ -1,4 +1,4 @@
-﻿using ECommerceManagementSystem.Infrastructure.Models;
+﻿using ECommerceManagementSystem.Domain.Entities;
 using ECommerceManagementSystem.Infrastructure.Repositories.Interfaces;
 using ECommerceManagementSystem.Infrastructure.Services.Interfaces;
 using System;
