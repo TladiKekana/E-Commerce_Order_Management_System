@@ -5,6 +5,7 @@ using System.Text;
 namespace ECommerceManagementSystem.Application.DTOs.AddressDTOs
 {
     public record UpdateAddressRequestDto(
+            int Address_Id,
             int User_Id,
             string Address_Type,
             string Street_Address,

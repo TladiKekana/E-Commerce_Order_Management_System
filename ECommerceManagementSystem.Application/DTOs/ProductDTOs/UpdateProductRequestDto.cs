@@ -5,6 +5,7 @@ using System.Text;
 namespace ECommerceManagementSystem.Application.DTOs.ProductDTOs
 {
     public record UpdateProductRequestDto(
+            int Product_Id,
             string Name,
             int Category_Id,
             int Supplier_Id,

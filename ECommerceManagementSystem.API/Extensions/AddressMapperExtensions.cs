@@ -63,6 +63,7 @@ namespace ECommerceManagementSystem.API.Extensions
         {
             return new Address
             {
+                Address_Id = request.Address_Id,
                 User_Id = request.User_Id,
                 Address_Type = request.Address_Type,
                 Street_Address = request.Street_Address,

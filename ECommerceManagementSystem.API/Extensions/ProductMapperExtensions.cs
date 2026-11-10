@@ -62,6 +62,7 @@ namespace ECommerceManagementSystem.API.Extensions
         {
             return new Product
             {
+                Product_Id = request.Product_Id,
                 Name = request.Name,
                 Category_Id = request.Category_Id,
                 Supplier_Id = request.Supplier_Id,

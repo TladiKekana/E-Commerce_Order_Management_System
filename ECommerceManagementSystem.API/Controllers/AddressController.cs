@@ -1,6 +1,10 @@
-﻿using ECommerceManagementSystem.Domain.Entities;
+﻿using ECommerceManagementSystem.API.Extensions;
+using ECommerceManagementSystem.Application.DTOs.AddressDTOs;
+using ECommerceManagementSystem.Domain.Entities;
+using ECommerceManagementSystem.Infrastructure.Data;
 using ECommerceManagementSystem.Infrastructure.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ECommerceManagementSystem.API.Controllers
 {
@@ -9,10 +13,12 @@ namespace ECommerceManagementSystem.API.Controllers
     public class AddressController : ControllerBase
     {
         private readonly IAddressService _addressService;
+        private readonly DataContext _context;
 
-        public AddressController(IAddressService addressService)
+        public AddressController(IAddressService addressService, DataContext context)
         {
             _addressService = addressService;
+            _context = context;
         }
 
         [HttpGet]
@@ -23,7 +29,7 @@ namespace ECommerceManagementSystem.API.Controllers
             if (addresses == null)
                 return NotFound();
 
-            return Ok(addresses);
+            return Ok(addresses.ToResponseDto());
         }
 
         [HttpGet("{id}")]
@@ -34,15 +40,20 @@ namespace ECommerceManagementSystem.API.Controllers
             if (address == null)
                 return NotFound();
 
-            return Ok(address);
+            return Ok(address.ToResponseDto());
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddAddress(Address address)
+        public async Task<IActionResult> AddAddress(AddAddressRequestDto address)
         {
-            var newAddress = await _addressService.AddAddressAsync(address);
+            var userExists = await _context.Users.AnyAsync(u => u.User_Id == address.User_Id);
 
-            return CreatedAtAction(nameof(GetAddress), new { id = newAddress.Address_Id }, newAddress);
+            if (!userExists) 
+                return BadRequest(new { message = $"User Id: {address.User_Id} does not exist" });
+
+            var newAddress = await _addressService.AddAddressAsync(address.ToEntity());
+
+            return CreatedAtAction(nameof(GetAddress), new { id = newAddress.Address_Id }, newAddress.ToResponseDto());
         }
 
         [HttpDelete("{id}")]
@@ -57,12 +68,17 @@ namespace ECommerceManagementSystem.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateAddress(int id, Address address)
+        public async Task<IActionResult> UpdateAddress(int id, UpdateAddressRequestDto address)
         {
             if(id != address.Address_Id)
                 return BadRequest();
 
-            var updated = await _addressService.UpdateAddressAsync(address);
+            var userExists = await _context.Users.AnyAsync(u => u.User_Id == address.User_Id);
+
+            if (!userExists)
+                return BadRequest(new { message = $"User Id: {address.User_Id} does not exist" });
+
+            var updated = await _addressService.UpdateAddressAsync(address.ToEntity());
 
             if(!updated)
                 return NotFound();

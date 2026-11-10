@@ -1,4 +1,6 @@
-﻿using ECommerceManagementSystem.Domain.Entities;
+﻿using ECommerceManagementSystem.API.Extensions;
+using ECommerceManagementSystem.Application.DTOs.CategoryDTOs;
+using ECommerceManagementSystem.Domain.Entities;
 using ECommerceManagementSystem.Infrastructure.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,7 +25,7 @@ namespace ECommerceManagementSystem.API.Controllers
             if(category == null)
                 return NotFound();
 
-            return Ok(category);
+            return Ok(category.ToResponseDto());
         }
 
         [HttpGet] // GET: api/categories
@@ -34,15 +36,15 @@ namespace ECommerceManagementSystem.API.Controllers
             if (categories == null)
                 return NotFound();
 
-            return Ok(categories);
+            return Ok(categories.ToResponseDto());
         }
 
         [HttpPost] // POST: api/categories
-        public async Task<IActionResult> AddCategory(Category category)
+        public async Task<IActionResult> AddCategory(AddCategoryRequestDto category)
         {
-            var newCategory = await _categoryService.AddCategoryAsync(category);
+            var newCategory = await _categoryService.AddCategoryAsync(category.ToEntity());
 
-            return CreatedAtAction(nameof(GetCategory), new {id = newCategory.Category_Id }, newCategory);
+            return CreatedAtAction(nameof(GetCategory), new {id = newCategory.Category_Id }, newCategory.ToResponseDto());
         }
 
         [HttpDelete("{id}")] // DELETE: api/categories/1
@@ -57,12 +59,12 @@ namespace ECommerceManagementSystem.API.Controllers
         }
 
         [HttpPut("{id}")] // PUT: api/categories/1
-        public async Task<IActionResult> UpdateCategory(int id, Category category)
+        public async Task<IActionResult> UpdateCategory(int id, UpdateCategoryRequestDto category)
         {
             if (id != category.Category_Id)
                 return BadRequest();
 
-            var updated = await _categoryService.UpdateCategoryAsync(category);
+            var updated = await _categoryService.UpdateCategoryAsync(category.ToEntity());
 
             if(!updated)
                 return NotFound();

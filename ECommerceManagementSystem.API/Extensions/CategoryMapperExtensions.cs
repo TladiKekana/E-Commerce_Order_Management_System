@@ -46,6 +46,7 @@ namespace ECommerceManagementSystem.API.Extensions
         {
             return new Category
             {
+                Category_Id = request.Category_Id,
                 Name = request.Name,
                 Description = request.Description
             };
