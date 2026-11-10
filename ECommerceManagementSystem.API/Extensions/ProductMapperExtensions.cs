@@ -22,6 +22,27 @@ namespace ECommerceManagementSystem.API.Extensions
                 );
         }
 
+        public static List<ProductResponseDto> ToResponseDto(this List<Product> products)
+        {
+            List<ProductResponseDto> productResponseDtos = new List<ProductResponseDto>();
+
+            foreach( var product in products )
+            {
+                productResponseDtos.Add( new ProductResponseDto(
+                        product.Product_Id,
+                        product.Category_Id,
+                        product.Supplier_Id,
+                        product.Name,
+                        product.Description,
+                        product.Sku,
+                        product.Price,
+                        product.Status
+                    ));
+            }
+
+            return productResponseDtos;
+        }
+
         // Maps Request DTO to Entity
         public static Product ToEntity(this AddProductRequestDto request)
         {

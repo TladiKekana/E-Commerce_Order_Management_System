@@ -2,6 +2,7 @@
 using ECommerceManagementSystem.Application.DTOs.CategoryDTOs;
 using ECommerceManagementSystem.Domain.Entities;
 using System.Diagnostics.Metrics;
+using System.Net;
 
 namespace ECommerceManagementSystem.API.Extensions
 {
@@ -20,6 +21,27 @@ namespace ECommerceManagementSystem.API.Extensions
                     address.Posta_Code,
                     address.Country
                 );
+        }
+
+        public static List<AddressResponseDto> ToResponseDto(this List<Address> addresses)
+        {
+            List<AddressResponseDto> addressResponseDtos = new List<AddressResponseDto>();
+
+            foreach (var address in addresses)
+            {
+                addressResponseDtos.Add(new AddressResponseDto(
+                        address.Address_Id,
+                        address.User_Id,
+                        address.Address_Type,
+                        address.Street_Address,
+                        address.City,
+                        address.Province,
+                        address.Posta_Code,
+                        address.Country
+                    ));
+            }
+
+            return addressResponseDtos;
         }
 
         // Maps Request DTO to Entity

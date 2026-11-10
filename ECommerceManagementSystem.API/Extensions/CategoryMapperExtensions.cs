@@ -16,6 +16,22 @@ namespace ECommerceManagementSystem.API.Extensions
                 );
         }
 
+        public static List<CategoryResponseDto> ToResponseDto(this List<Category> categories)
+        {
+            List<CategoryResponseDto> categoryResponseDtos = new List<CategoryResponseDto>();
+
+            foreach (var category in categories)
+            {
+                categoryResponseDtos.Add(new CategoryResponseDto(
+                        category.Category_Id,
+                        category.Name,
+                        category.Description
+                    ));
+            }
+
+            return categoryResponseDtos;
+        }
+
         // Maps Request DTO to Entity
         public static Category ToEntity(this AddCategoryRequestDto request)
         {

@@ -1,4 +1,5 @@
-﻿using ECommerceManagementSystem.Domain.Entities;
+﻿using ECommerceManagementSystem.API.Extensions;
+using ECommerceManagementSystem.Domain.Entities;
 using ECommerceManagementSystem.Infrastructure.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -34,7 +35,7 @@ namespace ECommerceManagementSystem.API.Controllers
             if (product == null)
                 return NotFound();
 
-            return Ok(product);
+            return Ok(product.ToResponseDto());
         }
 
         [HttpPost] // POST: api/products
