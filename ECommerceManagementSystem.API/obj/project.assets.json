@@ -1127,6 +1127,16 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
+      "ECommerceManagementSystem.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/ECommerceManagementSystem.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ECommerceManagementSystem.Application.dll": {}
+        }
+      },
       "ECommerceManagementSystem.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
@@ -3270,6 +3280,11 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "ECommerceManagementSystem.Application/1.0.0": {
+      "type": "project",
+      "path": "../ECommerceManagementSystem.Application/ECommerceManagementSystem.Application.csproj",
+      "msbuildProject": "../ECommerceManagementSystem.Application/ECommerceManagementSystem.Application.csproj"
+    },
     "ECommerceManagementSystem.Domain/1.0.0": {
       "type": "project",
       "path": "../ECommerceManagementSystem.Domain/ECommerceManagementSystem.Domain.csproj",
@@ -3283,6 +3298,8 @@
   },
   "projectFileDependencyGroups": {
     "net10.0": [
+      "ECommerceManagementSystem.Application >= 1.0.0",
+      "ECommerceManagementSystem.Domain >= 1.0.0",
       "ECommerceManagementSystem.Infrastructure >= 1.0.0",
       "Microsoft.AspNetCore.OpenApi >= 10.0.12",
       "Microsoft.EntityFrameworkCore.Design >= 10.0.14",
@@ -3325,6 +3342,12 @@
           "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {
+            "C:\\Users\\vdnku\\Documents\\Tladi\\Projects\\E-Commerce_Order_Management_System\\ECommerceManagementSystem.Application\\ECommerceManagementSystem.Application.csproj": {
+              "projectPath": "C:\\Users\\vdnku\\Documents\\Tladi\\Projects\\E-Commerce_Order_Management_System\\ECommerceManagementSystem.Application\\ECommerceManagementSystem.Application.csproj"
+            },
+            "C:\\Users\\vdnku\\Documents\\Tladi\\Projects\\E-Commerce_Order_Management_System\\ECommerceManagementSystem.Domain\\ECommerceManagementSystem.Domain.csproj": {
+              "projectPath": "C:\\Users\\vdnku\\Documents\\Tladi\\Projects\\E-Commerce_Order_Management_System\\ECommerceManagementSystem.Domain\\ECommerceManagementSystem.Domain.csproj"
+            },
             "C:\\Users\\vdnku\\Documents\\Tladi\\Projects\\E-Commerce_Order_Management_System\\ECommerceManagementSystem.Infrastructure\\ECommerceManagementSystem.Infrastructure.csproj": {
               "projectPath": "C:\\Users\\vdnku\\Documents\\Tladi\\Projects\\E-Commerce_Order_Management_System\\ECommerceManagementSystem.Infrastructure\\ECommerceManagementSystem.Infrastructure.csproj"
             }

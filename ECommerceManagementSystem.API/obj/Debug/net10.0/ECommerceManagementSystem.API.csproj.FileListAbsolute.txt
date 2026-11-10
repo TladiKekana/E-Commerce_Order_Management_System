@@ -206,3 +206,5 @@ C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\EComm
 C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\ECommerceManagementSystem.API\bin\Debug\net10.0\Scalar.AspNetCore.dll
 C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\ECommerceManagementSystem.API\bin\Debug\net10.0\ECommerceManagementSystem.Domain.dll
 C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\ECommerceManagementSystem.API\bin\Debug\net10.0\ECommerceManagementSystem.Domain.pdb
+C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\ECommerceManagementSystem.API\bin\Debug\net10.0\ECommerceManagementSystem.Application.dll
+C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\ECommerceManagementSystem.API\bin\Debug\net10.0\ECommerceManagementSystem.Application.pdb
