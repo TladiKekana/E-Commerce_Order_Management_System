@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ECommerceManagementSystem.Application.DTOs.AddressDTOs
+namespace ECommerceManagementSystem.Application.DTOs
 {
-    public record UpdateAddressRequestDto(
-            int Address_Id,
+    public record AddAddressRequestDto(
             int User_Id,
             string Address_Type,
             string Street_Address,

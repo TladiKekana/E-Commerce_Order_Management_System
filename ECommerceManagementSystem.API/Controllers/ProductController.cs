@@ -1,8 +1,9 @@
 ﻿using ECommerceManagementSystem.API.Extensions;
-using ECommerceManagementSystem.Application.DTOs.ProductDTOs;
+using ECommerceManagementSystem.Application.DTOs;
 using ECommerceManagementSystem.Domain.Entities;
 using ECommerceManagementSystem.Infrastructure.Data;
 using ECommerceManagementSystem.Infrastructure.Services.Interfaces;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,12 +14,18 @@ namespace ECommerceManagementSystem.API.Controllers
     public class ProductController : ControllerBase
     {
         private readonly IProductService _productService;
+        private readonly IValidator<AddProductRequestDto> _addProductValidator;
+        private readonly IValidator<UpdateProductRequestDto> _updateProductValidator;
         private readonly DataContext _context;
 
-        public ProductController(IProductService productService, DataContext context)
+        public ProductController(IProductService productService, DataContext context,
+            IValidator<AddProductRequestDto> addProductValidator,
+            IValidator<UpdateProductRequestDto> updateProductValidator)
         {
             _productService = productService;
             _context = context;
+            _addProductValidator = addProductValidator;
+            _updateProductValidator = updateProductValidator;
         }
 
         [HttpGet] // GET: api/products
@@ -46,6 +53,11 @@ namespace ECommerceManagementSystem.API.Controllers
         [HttpPost] // POST: api/products
         public async Task<IActionResult> AddProduct(AddProductRequestDto product)
         {
+            var validationResult = await _addProductValidator.ValidateAsync(product);
+
+            if (!validationResult.IsValid)
+                return BadRequest(validationResult.Errors);
+
             bool categoryExists = await _context.Categories.AnyAsync(c => c.Category_Id == product.Category_Id);
 
             if (!categoryExists)
@@ -77,6 +89,11 @@ namespace ECommerceManagementSystem.API.Controllers
         {
             if (id != product.Product_Id)
                 return BadRequest();
+
+            var validationResult = await _updateProductValidator.ValidateAsync(product);
+
+            if (!validationResult.IsValid)
+                return BadRequest(validationResult.Errors);
 
             bool categoryExists = await _context.Categories.AnyAsync(c => c.Category_Id == product.Category_Id);
 

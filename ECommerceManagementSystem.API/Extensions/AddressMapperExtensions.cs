@@ -1,5 +1,4 @@
-﻿using ECommerceManagementSystem.Application.DTOs.AddressDTOs;
-using ECommerceManagementSystem.Application.DTOs.CategoryDTOs;
+﻿using ECommerceManagementSystem.Application.DTOs;
 using ECommerceManagementSystem.Domain.Entities;
 using System.Diagnostics.Metrics;
 using System.Net;

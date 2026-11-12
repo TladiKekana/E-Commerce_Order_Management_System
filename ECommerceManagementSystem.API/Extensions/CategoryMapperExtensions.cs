@@ -1,5 +1,4 @@
-﻿using ECommerceManagementSystem.Application.DTOs.CategoryDTOs;
-using ECommerceManagementSystem.Application.DTOs.ProductDTOs;
+﻿using ECommerceManagementSystem.Application.DTOs;
 using ECommerceManagementSystem.Domain.Entities;
 
 namespace ECommerceManagementSystem.API.Extensions
@@ -33,20 +32,20 @@ namespace ECommerceManagementSystem.API.Extensions
         }
 
         // Maps Request DTO to Entity
-        public static Category ToEntity(this AddCategoryRequestDto request)
-        {
-            return new Category
-            {
-                Name = request.Name,
-                Description = request.Description
-            };
-        }
-
         public static Category ToEntity(this UpdateCategoryRequestDto request)
         {
             return new Category
             {
                 Category_Id = request.Category_Id,
+                Name = request.Name,
+                Description = request.Description
+            };
+        }
+
+        public static Category ToEntity(this AddCategoryRequestDto request)
+        {
+            return new Category
+            {
                 Name = request.Name,
                 Description = request.Description
             };

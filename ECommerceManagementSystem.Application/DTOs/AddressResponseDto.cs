@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ECommerceManagementSystem.Application.DTOs.AddressDTOs
+namespace ECommerceManagementSystem.Application.DTOs
 {
     public record AddressResponseDto(
         int Address_Id,

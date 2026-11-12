@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "4q3ihXo2DKE=",
+  "dgSpecHash": "62IXPR4EmxA=",
   "success": true,
   "projectFilePath": "C:\\Users\\vdnku\\Documents\\Tladi\\Projects\\E-Commerce_Order_Management_System\\ECommerceManagementSystem.API\\ECommerceManagementSystem.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\vdnku\\.nuget\\packages\\azure.core\\1.50.0\\azure.core.1.50.0.nupkg.sha512",
     "C:\\Users\\vdnku\\.nuget\\packages\\azure.identity\\1.17.1\\azure.identity.1.17.1.nupkg.sha512",
+    "C:\\Users\\vdnku\\.nuget\\packages\\fluentvalidation\\12.2.0\\fluentvalidation.12.2.0.nupkg.sha512",
+    "C:\\Users\\vdnku\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\12.2.0\\fluentvalidation.dependencyinjectionextensions.12.2.0.nupkg.sha512",
     "C:\\Users\\vdnku\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\vdnku\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.12\\microsoft.aspnetcore.openapi.10.0.12.nupkg.sha512",
     "C:\\Users\\vdnku\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\8.0.0\\microsoft.bcl.asyncinterfaces.8.0.0.nupkg.sha512",

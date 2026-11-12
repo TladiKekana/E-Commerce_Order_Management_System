@@ -3,6 +3,7 @@ using ECommerceManagementSystem.API.Extensions;
 using ECommerceManagementSystem.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
+using FluentValidation;
 
 namespace ECommerceManagementSystem.API
 {
@@ -24,6 +25,7 @@ namespace ECommerceManagementSystem.API
                 ));
 
             builder.Services.AddApplicationServices();
+            builder.Services.AddDtoValidators();
 
             var app = builder.Build();
 

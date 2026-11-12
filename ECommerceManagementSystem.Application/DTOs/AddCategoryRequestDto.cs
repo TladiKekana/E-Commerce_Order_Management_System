@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ECommerceManagementSystem.Application.DTOs.CategoryDTOs
+namespace ECommerceManagementSystem.Application.DTOs
 {
-    public record CategoryResponseDto
+    public record AddCategoryRequestDto
     (
-        int Category_Id,
         string Name,
         string Description
     );

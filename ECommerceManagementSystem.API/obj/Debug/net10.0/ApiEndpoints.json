@@ -19,7 +19,7 @@
     "Parameters": [
       {
         "Name": "address",
-        "Type": "ECommerceManagementSystem.Application.DTOs.AddressDTOs.AddAddressRequestDto",
+        "Type": "ECommerceManagementSystem.Application.DTOs.AddAddressRequestDto",
         "IsRequired": true
       }
     ],
@@ -72,7 +72,7 @@
       },
       {
         "Name": "address",
-        "Type": "ECommerceManagementSystem.Application.DTOs.AddressDTOs.UpdateAddressRequestDto",
+        "Type": "ECommerceManagementSystem.Application.DTOs.UpdateAddressRequestDto",
         "IsRequired": true
       }
     ],
@@ -98,7 +98,7 @@
     "Parameters": [
       {
         "Name": "category",
-        "Type": "ECommerceManagementSystem.Application.DTOs.CategoryDTOs.AddCategoryRequestDto",
+        "Type": "ECommerceManagementSystem.Application.DTOs.AddCategoryRequestDto",
         "IsRequired": true
       }
     ],
@@ -151,7 +151,7 @@
       },
       {
         "Name": "category",
-        "Type": "ECommerceManagementSystem.Application.DTOs.CategoryDTOs.UpdateCategoryRequestDto",
+        "Type": "ECommerceManagementSystem.Application.DTOs.UpdateCategoryRequestDto",
         "IsRequired": true
       }
     ],
@@ -177,7 +177,7 @@
     "Parameters": [
       {
         "Name": "product",
-        "Type": "ECommerceManagementSystem.Application.DTOs.ProductDTOs.AddProductRequestDto",
+        "Type": "ECommerceManagementSystem.Application.DTOs.AddProductRequestDto",
         "IsRequired": true
       }
     ],
@@ -230,7 +230,7 @@
       },
       {
         "Name": "product",
-        "Type": "ECommerceManagementSystem.Application.DTOs.ProductDTOs.UpdateProductRequestDto",
+        "Type": "ECommerceManagementSystem.Application.DTOs.UpdateProductRequestDto",
         "IsRequired": true
       }
     ],

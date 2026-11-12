@@ -1,7 +1,8 @@
 ﻿using ECommerceManagementSystem.API.Extensions;
-using ECommerceManagementSystem.Application.DTOs.CategoryDTOs;
+using ECommerceManagementSystem.Application.DTOs;
 using ECommerceManagementSystem.Domain.Entities;
 using ECommerceManagementSystem.Infrastructure.Services.Interfaces;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerceManagementSystem.API.Controllers
@@ -11,10 +12,16 @@ namespace ECommerceManagementSystem.API.Controllers
     public class CategoryController : ControllerBase
     {
         private readonly ICategoryService _categoryService;
+        private readonly IValidator<AddCategoryRequestDto> _addCategoryValidator;
+        private readonly IValidator<UpdateCategoryRequestDto> _updateCategoryValidator;
 
-        public CategoryController(ICategoryService categoryService)
+        public CategoryController(ICategoryService categoryService,
+            IValidator<AddCategoryRequestDto> addCategoryValidator, 
+            IValidator<UpdateCategoryRequestDto> updateCategoryValidator)
         {
             _categoryService = categoryService;
+            _addCategoryValidator = addCategoryValidator;
+            _updateCategoryValidator = updateCategoryValidator;
         }
 
         [HttpGet("{id}")] // GET: api/categories/1
@@ -42,6 +49,11 @@ namespace ECommerceManagementSystem.API.Controllers
         [HttpPost] // POST: api/categories
         public async Task<IActionResult> AddCategory(AddCategoryRequestDto category)
         {
+            var validationResult = await _addCategoryValidator.ValidateAsync(category);
+
+            if (!validationResult.IsValid)
+                return BadRequest(validationResult.Errors);
+
             var newCategory = await _categoryService.AddCategoryAsync(category.ToEntity());
 
             return CreatedAtAction(nameof(GetCategory), new {id = newCategory.Category_Id }, newCategory.ToResponseDto());
@@ -63,6 +75,11 @@ namespace ECommerceManagementSystem.API.Controllers
         {
             if (id != category.Category_Id)
                 return BadRequest();
+
+            var validationResult = await _updateCategoryValidator.ValidateAsync(category);
+
+            if (!validationResult.IsValid)
+                return BadRequest(validationResult.Errors);
 
             var updated = await _categoryService.UpdateCategoryAsync(category.ToEntity());
 

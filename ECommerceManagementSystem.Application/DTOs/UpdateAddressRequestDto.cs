@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ECommerceManagementSystem.Application.DTOs.AddressDTOs
+namespace ECommerceManagementSystem.Application.DTOs
 {
-    public record AddAddressRequestDto(
+    public record UpdateAddressRequestDto
+    (
+            int Address_Id,
             int User_Id,
             string Address_Type,
             string Street_Address,
@@ -12,5 +14,5 @@ namespace ECommerceManagementSystem.Application.DTOs.AddressDTOs
             string Province,
             string Posta_Code,
             string Country
-        );
+    );
 }

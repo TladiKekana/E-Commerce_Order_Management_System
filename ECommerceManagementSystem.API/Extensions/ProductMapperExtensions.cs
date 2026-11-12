@@ -1,4 +1,4 @@
-﻿using ECommerceManagementSystem.Application.DTOs.ProductDTOs;
+﻿using ECommerceManagementSystem.Application.DTOs;
 using ECommerceManagementSystem.Domain.Entities;
 using System.Diagnostics.Metrics;
 using System.Net.NetworkInformation;
@@ -44,10 +44,11 @@ namespace ECommerceManagementSystem.API.Extensions
         }
 
         // Maps Request DTO to Entity
-        public static Product ToEntity(this AddProductRequestDto request)
+        public static Product ToEntity(this UpdateProductRequestDto request)
         {
             return new Product
             {
+                Product_Id = request.Product_Id,
                 Name = request.Name,
                 Category_Id = request.Category_Id,
                 Supplier_Id = request.Supplier_Id,
@@ -58,11 +59,10 @@ namespace ECommerceManagementSystem.API.Extensions
             };
         }
 
-        public static Product ToEntity(this UpdateProductRequestDto request)
+        public static Product ToEntity(this AddProductRequestDto request)
         {
             return new Product
             {
-                Product_Id = request.Product_Id,
                 Name = request.Name,
                 Category_Id = request.Category_Id,
                 Supplier_Id = request.Supplier_Id,
