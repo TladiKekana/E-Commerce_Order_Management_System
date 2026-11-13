@@ -1,4 +1,5 @@
 ﻿using ECommerceManagementSystem.Domain.Entities;
+using ECommerceManagementSystem.Infrastructure.Helpers;
 using ECommerceManagementSystem.Infrastructure.Repositories.Interfaces;
 using ECommerceManagementSystem.Infrastructure.Services.Interfaces;
 using System;
@@ -30,9 +31,9 @@ namespace ECommerceManagementSystem.Infrastructure.Services.Implementations
             return await _repository.GetAddressAsync(id);
         }
 
-        public async Task<List<Address>> GetAddressesAsync()
+        public async Task<List<Address>> GetAddressesAsync(AddressQueryParameters query)
         {
-            return await _repository.GetAddressesAsync();
+            return await _repository.GetAddressesAsync(query);
         }
 
         public async Task<bool> UpdateAddressAsync(Address address)

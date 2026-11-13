@@ -1,6 +1,7 @@
 ﻿using ECommerceManagementSystem.API.Extensions;
 using ECommerceManagementSystem.Application.DTOs;
 using ECommerceManagementSystem.Domain.Entities;
+using ECommerceManagementSystem.Infrastructure.Helpers;
 using ECommerceManagementSystem.Infrastructure.Services.Interfaces;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
@@ -36,9 +37,9 @@ namespace ECommerceManagementSystem.API.Controllers
         }
 
         [HttpGet] // GET: api/categories
-        public async Task<IActionResult> GetCategories()
+        public async Task<IActionResult> GetCategories([FromQuery] CategoryQueryParameters query)
         {
-            var categories = await _categoryService.GetCategoriesAsync();
+            var categories = await _categoryService.GetCategoriesAsync(query);
 
             if (categories == null)
                 return NotFound();

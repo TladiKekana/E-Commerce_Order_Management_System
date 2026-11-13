@@ -2,6 +2,7 @@
 using ECommerceManagementSystem.Application.DTOs;
 using ECommerceManagementSystem.Domain.Entities;
 using ECommerceManagementSystem.Infrastructure.Data;
+using ECommerceManagementSystem.Infrastructure.Helpers;
 using ECommerceManagementSystem.Infrastructure.Services.Interfaces;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
@@ -29,9 +30,9 @@ namespace ECommerceManagementSystem.API.Controllers
         }
 
         [HttpGet] // GET: api/products
-        public async Task<IActionResult> GetProducts()
+        public async Task<IActionResult> GetProducts([FromQuery] ProductQueryParameters query)
         {
-            var products = await _productService.GetProductsAsync();
+            var products = await _productService.GetProductsAsync(query);
 
             if(products == null)
                 return NotFound();

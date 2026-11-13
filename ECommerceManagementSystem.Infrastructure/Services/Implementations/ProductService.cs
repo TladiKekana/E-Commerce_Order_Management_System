@@ -1,6 +1,9 @@
 ﻿using ECommerceManagementSystem.Domain.Entities;
+using ECommerceManagementSystem.Infrastructure.Data;
+using ECommerceManagementSystem.Infrastructure.Helpers;
 using ECommerceManagementSystem.Infrastructure.Repositories.Interfaces;
 using ECommerceManagementSystem.Infrastructure.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -30,9 +33,9 @@ namespace ECommerceManagementSystem.Infrastructure.Services.Implementations
             return await _repository.GetProductAsync(id);
         }
 
-        public async Task<List<Product>> GetProductsAsync()
+        public async Task<List<Product>> GetProductsAsync(ProductQueryParameters query)
         {
-            return await _repository.GetProductsAsync();
+            return await _repository.GetProductsAsync(query);
         }
 
         public async Task<bool> UpdateProductAsync(Product product)

@@ -1,4 +1,5 @@
 ﻿using ECommerceManagementSystem.Domain.Entities;
+using ECommerceManagementSystem.Infrastructure.Helpers;
 using ECommerceManagementSystem.Infrastructure.Repositories.Interfaces;
 using ECommerceManagementSystem.Infrastructure.Services.Interfaces;
 using System;
@@ -25,9 +26,9 @@ namespace ECommerceManagementSystem.Infrastructure.Services.Implementations
             return await _repository.DeleteCategoryAsync(id);
         }
 
-        public async Task<List<Category>> GetCategoriesAsync()
+        public async Task<List<Category>> GetCategoriesAsync(CategoryQueryParameters query)
         {
-            return await _repository.GetCategoriesAsync();
+            return await _repository.GetCategoriesAsync(query);
         }
 
         public async Task<Category> GetCategoryAsync(int id)

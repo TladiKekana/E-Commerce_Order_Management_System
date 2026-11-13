@@ -1,5 +1,6 @@
-﻿using ECommerceManagementSystem.Infrastructure.Data;
-using ECommerceManagementSystem.Domain.Entities;
+﻿using ECommerceManagementSystem.Domain.Entities;
+using ECommerceManagementSystem.Infrastructure.Data;
+using ECommerceManagementSystem.Infrastructure.Helpers;
 using ECommerceManagementSystem.Infrastructure.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -42,9 +43,31 @@ namespace ECommerceManagementSystem.Infrastructure.Repositories.Implementations
             return await _context.Products.FindAsync(id);
         }
 
-        public async Task<List<Product>> GetProductsAsync()
+        public async Task<List<Product>> GetProductsAsync(ProductQueryParameters query)
         {
-            return await _context.Products.ToListAsync();
+            var products = _context.Products.AsQueryable();
+
+            // Filtering
+            if (!string.IsNullOrEmpty(query.Category))
+                products = products.Where(p => p.Category.Name == query.Category);
+
+            // Sorting
+            if(!string.IsNullOrEmpty(query.SortBy))
+            {
+                switch(query.SortBy.ToLower())
+                {
+                    case "price": products = products.OrderBy(p => p.Price); break;
+                    case "name": products = products.OrderBy(p => p.Name); break;
+                    default : products = products.OrderBy(p => p.Product_Id); break;
+                }
+            }
+
+            // Pagination
+            products = products
+                .Skip((query.PageNumber - 1) * query.PageSize)
+                .Take(query.PageSize);
+
+            return await products.ToListAsync();
         }
 
         public async Task<bool> UpdateProductAsync(Product product)

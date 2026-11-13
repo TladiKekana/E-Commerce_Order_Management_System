@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using ECommerceManagementSystem.Infrastructure.Helpers;
 
 namespace ECommerceManagementSystem.Infrastructure.Repositories.Implementations
 {
@@ -42,9 +43,38 @@ namespace ECommerceManagementSystem.Infrastructure.Repositories.Implementations
             return await _context.Addresses.FindAsync(id);
         }
 
-        public async Task<List<Address>> GetAddressesAsync()
+        public async Task<List<Address>> GetAddressesAsync(AddressQueryParameters query)
         {
-            return await _context.Addresses.ToListAsync();
+            var addresses = _context.Addresses.AsQueryable();
+
+            // Filtering
+            if(!string.IsNullOrEmpty(query.Province))
+                addresses = addresses.Where(a =>  a.Province == query.Province);
+
+            if(!string.IsNullOrEmpty(query.Country))
+                addresses = addresses.Where(a => a.Country == query.Country);
+
+            if (!string.IsNullOrEmpty(query.City))
+                addresses = addresses.Where(a => a.City == query.City);
+
+            // Sorting
+            if (!string.IsNullOrEmpty(query.SortBy))
+            {
+                switch(query.SortBy.ToLower())
+                {
+                    case "province": addresses = addresses.OrderBy(a => a.Province); break;
+                    case "country": addresses = addresses.OrderBy(a => a.Province); break;
+                    case "city": addresses = addresses.OrderBy(a => a.Province); break;
+                    default : addresses = addresses.OrderBy(a => a.Address_Id); break;
+                }
+            }
+
+            // Pagination
+            addresses = addresses
+                .Skip((query.PageNumber - 1) * query.PageSize)
+                .Take(query.PageSize);
+
+            return await addresses.ToListAsync();
         }
 
         public async Task<bool> UpdateAddressAsync(Address address)

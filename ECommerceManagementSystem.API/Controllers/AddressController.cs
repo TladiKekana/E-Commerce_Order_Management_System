@@ -3,6 +3,7 @@ using ECommerceManagementSystem.Application.DTOs;
 using ECommerceManagementSystem.Application.Validators;
 using ECommerceManagementSystem.Domain.Entities;
 using ECommerceManagementSystem.Infrastructure.Data;
+using ECommerceManagementSystem.Infrastructure.Helpers;
 using ECommerceManagementSystem.Infrastructure.Services.Interfaces;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
@@ -30,9 +31,9 @@ namespace ECommerceManagementSystem.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAddresses()
+        public async Task<IActionResult> GetAddresses([FromQuery] AddressQueryParameters query)
         {
-            var addresses = await _addressService.GetAddressesAsync();
+            var addresses = await _addressService.GetAddressesAsync(query);
 
             if (addresses == null)
                 return NotFound();

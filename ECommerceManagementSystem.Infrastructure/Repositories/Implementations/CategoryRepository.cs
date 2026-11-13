@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using ECommerceManagementSystem.Infrastructure.Helpers;
 
 namespace ECommerceManagementSystem.Infrastructure.Repositories.Implementations
 {
@@ -42,9 +43,26 @@ namespace ECommerceManagementSystem.Infrastructure.Repositories.Implementations
             return await _context.Categories.FindAsync(id);
         }
 
-        public async Task<List<Category>> GetCategoriesAsync()
+        public async Task<List<Category>> GetCategoriesAsync(CategoryQueryParameters query)
         {
-            return await _context.Categories.ToListAsync();
+            var categories = _context.Categories.AsQueryable();
+
+            // Sorting
+            if(!string.IsNullOrEmpty(query.SortBy))
+            {
+                switch(query.SortBy.ToLower())
+                {
+                    case "name": categories = categories.OrderBy(c => c.Name); break;
+                    default : categories = categories.OrderBy(c => c.Category_Id); break; 
+                }
+            }
+
+            // Pagination
+            categories = categories
+                .Skip((query.PageNumber - 1) * query.PageSize)
+                .Take(query.PageSize);
+
+            return await categories.ToListAsync();
         }
 
         public async Task<bool> UpdateCategoryAsync(Category category)
