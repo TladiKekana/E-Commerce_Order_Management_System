@@ -13,6 +13,8 @@ namespace ECommerceManagementSystem.API.Extensions
             services.AddValidatorsFromAssemblyContaining<UpdateCategoryRequestDtoValidator>();
             services.AddValidatorsFromAssemblyContaining<AddProductRequestDtoValidator>();
             services.AddValidatorsFromAssemblyContaining<UpdateProductRequestDtoValidator>();
+            services.AddValidatorsFromAssemblyContaining<UserLoginDtoValidator>();
+            services.AddValidatorsFromAssemblyContaining<UserRegisterDtoValidator>();
 
             return services;
         }

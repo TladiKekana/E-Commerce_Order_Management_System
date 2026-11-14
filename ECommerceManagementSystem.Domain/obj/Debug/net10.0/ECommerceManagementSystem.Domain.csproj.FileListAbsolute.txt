@@ -23,3 +23,4 @@ C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\EComm
 C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\ECommerceManagementSystem.Domain\obj\Debug\net10.0\ECommerceManagementSystem.Domain.pdb
 C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\ECommerceManagementSystem.Domain\obj\Debug\net10.0\ref\ECommerceManagementSystem.Domain.dll
 C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\ECommerceManagementSystem.Domain\obj\Debug\net10.0\ECommerc.FF3AEA31.Up2Date
+C:\Users\vdnku\Documents\Tladi\Projects\E-Commerce_Order_Management_System\ECommerceManagementSystem.Domain\obj\Debug\net10.0\ECommerceManagementSystem.Domain.csproj.AssemblyReference.cache

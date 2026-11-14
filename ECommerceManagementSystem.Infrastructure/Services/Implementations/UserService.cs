@@ -15,7 +15,7 @@ namespace ECommerceManagementSystem.Infrastructure.Services.Implementations
         {
             _repository = repository;
         }
-        public async Task<User> AddUserAsync(User user)
+        public async Task<ApplicationUser> AddUserAsync(ApplicationUser user)
         {
             return await _repository.AddUserAsync(user);
         }
@@ -25,19 +25,19 @@ namespace ECommerceManagementSystem.Infrastructure.Services.Implementations
             return await _repository.DeleteUserAsync(id);
         }
 
-        public async Task<User> GetUserAsync(int id)
+        public async Task<ApplicationUser> GetUserAsync(int id)
         {
             return await _repository.GetUserAsync(id);
         }
 
-        public async Task<List<User>> GetUsersAsync()
+        public async Task<List<ApplicationUser>> GetUsersAsync()
         {
             return await _repository.GetUsersAsync();
         }
 
-        public async Task<bool> UpdateUserAsync(User user)
+        /*public async Task<bool> UpdateUserAsync(ApplicationUser user)
         {
             return await _repository.UpdateUserAsync(user);
-        }
+        }*/
     }
 }

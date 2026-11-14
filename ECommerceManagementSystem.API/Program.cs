@@ -1,9 +1,15 @@
 
 using ECommerceManagementSystem.API.Extensions;
+using ECommerceManagementSystem.Domain.Entities;
 using ECommerceManagementSystem.Infrastructure.Data;
-using Microsoft.EntityFrameworkCore;
-using Scalar.AspNetCore;
 using FluentValidation;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.IdentityModel.Tokens;
+using Scalar.AspNetCore;
+using System.Text;
 
 namespace ECommerceManagementSystem.API
 {
@@ -24,8 +30,57 @@ namespace ECommerceManagementSystem.API
                     b => b.MigrationsAssembly("ECommerceManagementSystem.API")
                 ));
 
+            builder.Services.AddIdentityApiEndpoints<ApplicationUser>()
+            .AddEntityFrameworkStores<DataContext>()
+            .AddDefaultTokenProviders();
+
+            // Configure JWT Authentication
+            var jwtSettings = builder.Configuration.GetSection("Jwt");
+            var key = Encoding.UTF8.GetBytes(jwtSettings["Key"]!);
+
+            builder.Services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(options =>
+            {
+                options.MapInboundClaims = false; // Keeps standard JWT claim names like 'sub
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = jwtSettings["Issuer"],
+                    ValidAudience = jwtSettings["Audience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ClockSkew = TimeSpan.Zero
+                };
+            });
+
+            builder.Services.AddAuthorization();
+
+            /*builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidIssuer = builder.Configuration["AppSettings:Issuer"],
+                        ValidateAudience = true,
+                        ValidAudience = builder.Configuration["AppSettings:Audience"],
+                        ValidateLifetime = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(
+                            Encoding.UTF8.GetBytes(builder.Configuration["AppSettings:Token"]!)),
+                        ValidateIssuerSigningKey = true
+                    };
+                });*/
+
             builder.Services.AddApplicationServices();
             builder.Services.AddDtoValidators();
+
+            
 
             var app = builder.Build();
 
@@ -37,6 +92,8 @@ namespace ECommerceManagementSystem.API
             }
 
             app.UseHttpsRedirection();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

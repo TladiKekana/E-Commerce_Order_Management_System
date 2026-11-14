@@ -10,7 +10,7 @@ namespace ECommerceManagementSystem.Infrastructure.Repositories.Implementations
 {
     public class RoleRepository : IRoleRepository
     {
-        private readonly DataContext _context;
+        /*private readonly DataContext _context;
 
         public RoleRepository(DataContext context)
         {
@@ -58,6 +58,6 @@ namespace ECommerceManagementSystem.Infrastructure.Repositories.Implementations
             await _context.SaveChangesAsync();
 
             return true;
-        }
+        }*/
     }
 }

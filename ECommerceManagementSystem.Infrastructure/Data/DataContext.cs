@@ -1,4 +1,5 @@
 ﻿using ECommerceManagementSystem.Domain.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -6,10 +7,8 @@ using System.Text;
 
 namespace ECommerceManagementSystem.Infrastructure.Data
 {
-    public class DataContext : DbContext
+    public class DataContext : IdentityDbContext<ApplicationUser, ApplicationRole, int>
     {
-        public DataContext(DbContextOptions options) : base(options) {}
-
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Inventory> Inventories { get; set; }
         public DbSet<Inventory_Transaction> Inventory_Transactions { get; set; }
@@ -20,12 +19,17 @@ namespace ECommerceManagementSystem.Infrastructure.Data
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Order> Orders { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<Role> Roles { get; set; }
+        //public DbSet<ApplicationUser> Users { get; set; }
+        //public DbSet<Role> Roles { get; set; }
         public DbSet<Shipment> Shipments { get; set; }
+
+        public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // This configures keys and owned types for Identity entities, including IdentityPasskeyData
+            base.OnModelCreating(modelBuilder);
+
             // Table Configurations
 
             // Configure Product table
@@ -55,11 +59,11 @@ namespace ECommerceManagementSystem.Infrastructure.Data
                 entity.HasKey(pi => pi.Image_Id);
             });
             // Configure Role table
-            modelBuilder.Entity<Role>(entity =>
+            /*modelBuilder.Entity<Role>(entity =>
             {
                 entity.HasKey(r => r.Role_Id);
                 entity.Property(r => r.Name).IsRequired().HasMaxLength(150);
-            });
+            });*/
             // Configure Shipments table
             modelBuilder.Entity<Shipment>(entity =>
             {
@@ -98,12 +102,12 @@ namespace ECommerceManagementSystem.Infrastructure.Data
                 entity.Property(o => o.Total_Amount).HasColumnType("decimal(18,2)");
             });
             // Configure User table
-            modelBuilder.Entity<User>(entity =>
+            /*modelBuilder.Entity<ApplicationUser>(entity =>
             {
                 entity.HasKey(u => u.User_Id);
                 entity.Property(u => u.First_Name).IsRequired().HasMaxLength(150);
                 entity.Property(u => u.Last_Name).IsRequired().HasMaxLength(150);
-            });
+            });*/
 
             // Table Relationships configuration
 
@@ -185,12 +189,12 @@ namespace ECommerceManagementSystem.Infrastructure.Data
                 .OnDelete(DeleteBehavior.Cascade); // Automatically deletes Orders if Customer is deleted
 
             // User(dependant entity) and Role(principal entity) one to many relationship
-            modelBuilder.Entity<User>()
+            /*modelBuilder.Entity<ApplicationUser>()
                 .HasOne(u => u.Role)
                 .WithMany(r => r.Users)
                 .HasForeignKey(u => u.Role_Id)
                 .OnDelete(DeleteBehavior.Cascade); // Automatically deletes Orders if Customer is deleted
-
+            */
             // Address(dependant entity) and User(principal entity) one to many relationship
             modelBuilder.Entity<Address>()
                 .HasOne(a => a.User)

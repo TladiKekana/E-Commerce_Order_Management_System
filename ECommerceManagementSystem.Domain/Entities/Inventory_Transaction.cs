@@ -17,6 +17,6 @@ namespace ECommerceManagementSystem.Domain.Entities
 
         // Navigation properties
         public Inventory Inventory { get; set; }
-        public User User { get; set; }
+        public ApplicationUser User { get; set; }
     }
 }

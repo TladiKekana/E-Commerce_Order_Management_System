@@ -52,7 +52,7 @@ namespace ECommerceManagementSystem.API.Controllers
             return Ok(address.ToResponseDto());
         }
 
-        [HttpPost]
+        /*[HttpPost]
         public async Task<IActionResult> AddAddress(AddAddressRequestDto address)
         {
             var validationResult = await _addAddressValidator.ValidateAsync(address);
@@ -68,7 +68,7 @@ namespace ECommerceManagementSystem.API.Controllers
             var newAddress = await _addressService.AddAddressAsync(address.ToEntity());
 
             return CreatedAtAction(nameof(GetAddress), new { id = newAddress.Address_Id }, newAddress.ToResponseDto());
-        }
+        }*/
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAddress(int id)
@@ -81,7 +81,7 @@ namespace ECommerceManagementSystem.API.Controllers
             return NoContent();
         }
 
-        [HttpPut("{id}")]
+        /*[HttpPut("{id}")]
         public async Task<IActionResult> UpdateAddress(int id, UpdateAddressRequestDto address)
         {
             if(id != address.Address_Id)
@@ -103,6 +103,6 @@ namespace ECommerceManagementSystem.API.Controllers
                 return NotFound();
 
             return NoContent();
-        }
+        }*/
     }
 }

@@ -9,7 +9,7 @@ namespace ECommerceManagementSystem.Infrastructure.Services.Implementations
 {
     public class RoleService : IRoleService
     {
-        private readonly IRoleRepository _repository;
+        /*private readonly IRoleRepository _repository;
 
         public RoleService(IRoleRepository repository)
         {
@@ -38,6 +38,6 @@ namespace ECommerceManagementSystem.Infrastructure.Services.Implementations
         public async Task<bool> UpdateRoleAsync(Role role)
         {
             return await _repository.UpdateRoleAsync(role);
-        }
+        }*/
     }
 }

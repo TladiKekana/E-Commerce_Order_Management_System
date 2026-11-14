@@ -18,7 +18,7 @@ namespace ECommerceManagementSystem.Domain.Entities
         public DateTime Created_At { get; set; }
 
         // Navigation Properties
-        public User User { get; set; }
+        public ApplicationUser User { get; set; }
         public ICollection<Order> Orders { get; set; }
 
     }

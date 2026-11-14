@@ -15,7 +15,7 @@ namespace ECommerceManagementSystem.Domain.Entities
         public Decimal Total_Amount { get; set; }
 
         // Navigation Properties
-        public User User { get; set; }
+        public ApplicationUser User { get; set; }
         public Address Address { get; set; }
         public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
         public ICollection<Payment> Payments { get; set; } = new List<Payment>();

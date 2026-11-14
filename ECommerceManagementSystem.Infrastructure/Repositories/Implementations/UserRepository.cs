@@ -17,7 +17,7 @@ namespace ECommerceManagementSystem.Infrastructure.Repositories.Implementations
             _context = context;
         }
 
-        public async Task<User> AddUserAsync(User user)
+        public async Task<ApplicationUser> AddUserAsync(ApplicationUser user)
         {
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
@@ -38,17 +38,17 @@ namespace ECommerceManagementSystem.Infrastructure.Repositories.Implementations
             return true;
         }
 
-        public async Task<User> GetUserAsync(int id)
+        public async Task<ApplicationUser> GetUserAsync(int id)
         {
             return await _context.Users.FindAsync(id);
         }
 
-        public async Task<List<User>> GetUsersAsync()
+        public async Task<List<ApplicationUser>> GetUsersAsync()
         {
             return await _context.Users.ToListAsync();
         }
 
-        public async Task<bool> UpdateUserAsync(User user)
+        /*public async Task<bool> UpdateUserAsync(ApplicationUser user)
         {
             var currentUser = await _context.Users.FindAsync(user.User_Id);
 
@@ -59,6 +59,6 @@ namespace ECommerceManagementSystem.Infrastructure.Repositories.Implementations
             await _context.SaveChangesAsync();
 
             return true;
-        }
+        }*/
     }
 }

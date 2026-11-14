@@ -7,10 +7,10 @@ namespace ECommerceManagementSystem.Infrastructure.Services.Interfaces
 {
     public interface IUserService
     {
-        Task<User> GetUserAsync(int id);
-        Task<List<User>> GetUsersAsync();
-        Task<User> AddUserAsync(User user);
-        Task<bool> UpdateUserAsync(User user);
+        Task<ApplicationUser> GetUserAsync(int id);
+        Task<List<ApplicationUser>> GetUsersAsync();
+        Task<ApplicationUser> AddUserAsync(ApplicationUser user);
+        //Task<bool> UpdateUserAsync(ApplicationUser user);
         Task<bool> DeleteUserAsync(int id);
     }
 }

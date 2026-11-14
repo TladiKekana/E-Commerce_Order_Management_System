@@ -23,6 +23,7 @@ namespace ECommerceManagementSystem.API.Extensions
             services.AddScoped<IProductImageRepository, ProductImageRepository>();
             services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<IShipmentRepository, ShipmentRepository>();
+            services.AddScoped<IValidateCredentialsRepository, ValidateCredentialsRepository>();
 
             // Register Business Logic Services
             services.AddScoped<ICategoryService, CategoryService>();
@@ -38,6 +39,7 @@ namespace ECommerceManagementSystem.API.Extensions
             services.AddScoped<IProductImageService, ProductImageService>();
             services.AddScoped<IRoleService, RoleService>();
             services.AddScoped<IShipmentService, ShipmentService>();
+            services.AddScoped<IValidateCredentialsService, ValidateCredentialsService>();
 
             return services;
         }
