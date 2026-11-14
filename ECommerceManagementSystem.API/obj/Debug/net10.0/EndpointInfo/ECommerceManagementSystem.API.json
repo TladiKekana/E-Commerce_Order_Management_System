@@ -77,36 +77,6 @@
             "description": "OK"
           }
         }
-      },
-      "post": {
-        "tags": [
-          "Address"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddAddressRequestDto"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddAddressRequestDto"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddAddressRequestDto"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
       }
     },
     "/api/Address/{id}": {
@@ -159,51 +129,6 @@
             "description": "OK"
           }
         }
-      },
-      "put": {
-        "tags": [
-          "Address"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "pattern": "^-?(?:0|[1-9]\\d*)$",
-              "type": [
-                "integer",
-                "string"
-              ],
-              "format": "int32"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateAddressRequestDto"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateAddressRequestDto"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateAddressRequestDto"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
       }
     },
     "/api/Auth/register": {
@@ -239,7 +164,7 @@
       }
     },
     "/api/Auth/login": {
-      "get": {
+      "post": {
         "tags": [
           "Auth"
         ],
@@ -263,6 +188,18 @@
           },
           "required": true
         },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Auth/me": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -624,46 +561,6 @@
   },
   "components": {
     "schemas": {
-      "AddAddressRequestDto": {
-        "required": [
-          "user_Id",
-          "address_Type",
-          "street_Address",
-          "city",
-          "province",
-          "posta_Code",
-          "country"
-        ],
-        "type": "object",
-        "properties": {
-          "user_Id": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
-            "format": "int32"
-          },
-          "address_Type": {
-            "type": "string"
-          },
-          "street_Address": {
-            "type": "string"
-          },
-          "city": {
-            "type": "string"
-          },
-          "province": {
-            "type": "string"
-          },
-          "posta_Code": {
-            "type": "string"
-          },
-          "country": {
-            "type": "string"
-          }
-        }
-      },
       "AddCategoryRequestDto": {
         "required": [
           "name",
@@ -725,55 +622,6 @@
             "format": "double"
           },
           "status": {
-            "type": "string"
-          }
-        }
-      },
-      "UpdateAddressRequestDto": {
-        "required": [
-          "address_Id",
-          "user_Id",
-          "address_Type",
-          "street_Address",
-          "city",
-          "province",
-          "posta_Code",
-          "country"
-        ],
-        "type": "object",
-        "properties": {
-          "address_Id": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
-            "format": "int32"
-          },
-          "user_Id": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
-            "format": "int32"
-          },
-          "address_Type": {
-            "type": "string"
-          },
-          "street_Address": {
-            "type": "string"
-          },
-          "city": {
-            "type": "string"
-          },
-          "province": {
-            "type": "string"
-          },
-          "posta_Code": {
-            "type": "string"
-          },
-          "country": {
             "type": "string"
           }
         }

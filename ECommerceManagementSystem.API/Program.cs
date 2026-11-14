@@ -31,6 +31,7 @@ namespace ECommerceManagementSystem.API
                 ));
 
             builder.Services.AddIdentityApiEndpoints<ApplicationUser>()
+            .AddRoles<ApplicationRole>()
             .AddEntityFrameworkStores<DataContext>()
             .AddDefaultTokenProviders();
 
