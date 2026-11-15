@@ -95,7 +95,13 @@
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "user",
+        "Type": "System.Security.Claims.ClaimsPrincipal",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -308,5 +314,24 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ECommerceManagementSystem.API.Program\u002B\u003C\u003Ec",
+    "Method": "\u003CMain\u003Eb__0_3",
+    "RelativePath": "claims",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "Identity"
+    ]
   }
 ]

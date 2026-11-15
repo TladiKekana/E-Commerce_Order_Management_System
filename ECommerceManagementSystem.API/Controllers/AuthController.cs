@@ -54,12 +54,29 @@ namespace ECommerceManagementSystem.API.Controllers
             return Ok(new { Token = token });
         }
 
-        [Authorize]
+        /*[Authorize]
         [HttpGet("me")]
-        public async Task<IActionResult> GetCurrentUser()
+        public async Task<IActionResult> GetCurrentUser(ClaimsPrincipal user)
         {
+            string? userEmail = "";
+            var claims = user.Claims.Select(c => new { c.Type, c.Value });
+
+            foreach (var claim in claims)
+            {
+                if (claim.Type == "email" && claim.Value == null)
+                {
+                    userEmail = claim.Value;
+                    return Unauthorized();
+                }
+            }
+
+            return Ok(new
+            {
+                userEmail
+            });
+
             // Extracts the user ID from the JWT 'sub' or 'NameIdentifier' claim
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            /*var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (string.IsNullOrEmpty(userId))
                 return Unauthorized();
 
@@ -76,6 +93,6 @@ namespace ECommerceManagementSystem.API.Controllers
                 user.UserName,
                 Roles = roles
             });
-        }
+        }*/
     }
 }

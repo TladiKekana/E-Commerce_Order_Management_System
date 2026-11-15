@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.IdentityModel.Tokens;
 using Scalar.AspNetCore;
+using System.Security.Claims;
 using System.Text;
 
 namespace ECommerceManagementSystem.API
@@ -62,22 +63,6 @@ namespace ECommerceManagementSystem.API
 
             builder.Services.AddAuthorization();
 
-            /*builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(options =>
-                {
-                    options.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuer = true,
-                        ValidIssuer = builder.Configuration["AppSettings:Issuer"],
-                        ValidateAudience = true,
-                        ValidAudience = builder.Configuration["AppSettings:Audience"],
-                        ValidateLifetime = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(
-                            Encoding.UTF8.GetBytes(builder.Configuration["AppSettings:Token"]!)),
-                        ValidateIssuerSigningKey = true
-                    };
-                });*/
-
             builder.Services.AddApplicationServices();
             builder.Services.AddDtoValidators();
 
@@ -97,6 +82,15 @@ namespace ECommerceManagementSystem.API
             app.UseAuthentication();
 
             app.UseAuthorization();
+
+            // Create claims endpoint
+            app.MapGet("/claims", (ClaimsPrincipal user) =>
+            {
+                var claims = user.Claims.Select(c => new { c.Type, c.Value });
+                return Results.Ok(claims);
+            })
+            .RequireAuthorization()
+            .WithTags("Identity"); // Groups it cleanly in Scalar UI
 
 
             app.MapControllers();

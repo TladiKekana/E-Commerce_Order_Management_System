@@ -13,6 +13,18 @@
     }
   ],
   "paths": {
+    "/claims": {
+      "get": {
+        "tags": [
+          "Identity"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Address": {
       "get": {
         "tags": [
@@ -200,6 +212,26 @@
         "tags": [
           "Auth"
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClaimsPrincipal"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClaimsPrincipal"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClaimsPrincipal"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "description": "OK"
@@ -626,6 +658,157 @@
           }
         }
       },
+      "Claim": {
+        "type": "object",
+        "properties": {
+          "issuer": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "originalIssuer": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "properties": {
+            "type": [
+              "null",
+              "object"
+            ],
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "subject": {
+            "$ref": "#/components/schemas/ClaimsIdentity"
+          },
+          "type": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "value": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "valueType": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "ClaimsIdentity": {
+        "type": "object",
+        "properties": {
+          "authenticationType": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "isAuthenticated": {
+            "type": "boolean"
+          },
+          "actor": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/ClaimsIdentity"
+              }
+            ]
+          },
+          "bootstrapContext": { },
+          "claims": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/Claim"
+            }
+          },
+          "label": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "name": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "nameClaimType": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "roleClaimType": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "ClaimsPrincipal": {
+        "type": "object",
+        "properties": {
+          "claims": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/Claim"
+            }
+          },
+          "identities": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/ClaimsIdentity"
+            }
+          },
+          "identity": {
+            "$ref": "#/components/schemas/IIdentity"
+          }
+        }
+      },
+      "IIdentity": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "authenticationType": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "isAuthenticated": {
+            "type": "boolean"
+          }
+        }
+      },
       "UpdateCategoryRequestDto": {
         "required": [
           "category_Id",
@@ -750,6 +933,9 @@
     }
   },
   "tags": [
+    {
+      "name": "Identity"
+    },
     {
       "name": "Address"
     },
