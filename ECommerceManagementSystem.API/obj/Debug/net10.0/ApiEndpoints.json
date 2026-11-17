@@ -73,6 +73,48 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ECommerceManagementSystem.API.Controllers.AdminController",
+    "Method": "Get",
+    "RelativePath": "api/Admin",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ECommerceManagementSystem.API.Controllers.AuthController",
+    "Method": "AddRole",
+    "RelativePath": "api/Auth/add-role",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "ECommerceManagementSystem.Application.DTOs.AddRoleRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ECommerceManagementSystem.API.Controllers.AuthController",
+    "Method": "AssignRole",
+    "RelativePath": "api/Auth/assign-role",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "ECommerceManagementSystem.Application.DTOs.AssignRoleRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ECommerceManagementSystem.API.Controllers.AuthController",
     "Method": "Login",
     "RelativePath": "api/Auth/login",
@@ -83,22 +125,6 @@
       {
         "Name": "model",
         "Type": "ECommerceManagementSystem.Application.DTOs.UserLoginDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "ECommerceManagementSystem.API.Controllers.AuthController",
-    "Method": "GetCurrentUser",
-    "RelativePath": "api/Auth/me",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "user",
-        "Type": "System.Security.Claims.ClaimsPrincipal",
         "IsRequired": true
       }
     ],
@@ -316,8 +342,18 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ECommerceManagementSystem.API.Controllers.UserContoller",
+    "Method": "Get",
+    "RelativePath": "api/UserContoller",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ECommerceManagementSystem.API.Program\u002B\u003C\u003Ec",
-    "Method": "\u003CMain\u003Eb__0_3",
+    "Method": "\u003CMain\u003Eb__0_4",
     "RelativePath": "claims",
     "HttpMethod": "GET",
     "IsController": false,

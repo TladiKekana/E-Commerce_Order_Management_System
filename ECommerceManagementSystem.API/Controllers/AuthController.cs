@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
@@ -17,12 +18,15 @@ namespace ECommerceManagementSystem.API.Controllers
         private readonly IValidateCredentialsService _service;
         private readonly IConfiguration _configuration;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly RoleManager<ApplicationRole> _roleManager;
 
-        public AuthController(IValidateCredentialsService service, IConfiguration configuration, UserManager<ApplicationUser> userManager)
+        public AuthController(IValidateCredentialsService service, IConfiguration configuration, 
+            UserManager<ApplicationUser> userManager, RoleManager<ApplicationRole> roleManager)
         {
             _service = service;
             _configuration = configuration;
             _userManager = userManager;
+            _roleManager = roleManager;
         }
 
         [HttpPost("register")]
@@ -50,8 +54,50 @@ namespace ECommerceManagementSystem.API.Controllers
             if (user is null || !await _userManager.CheckPasswordAsync(user, model.Password))
                 return Unauthorized(new { Message = "Invalid credentials." });
 
+            var userRoles = await _userManager.GetRolesAsync(user);
+
+            var authClaims = new List<Claim>
+            {
+                new Claim(JwtRegisteredClaimNames.Sub, user.Email!),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+            };
+
+            authClaims.AddRange(userRoles.Select(role => new Claim(ClaimTypes.Role, role)));
+
             var token = await _service.GenerateJwtToken(user);
             return Ok(new { Token = token });
+        }
+
+        [HttpPost("add-role")]
+        public async Task<IActionResult> AddRole(AddRoleRequestDto model)
+        {
+            var newRole = new ApplicationRole
+            {
+                Name = model.role
+            };
+
+            var result = await _roleManager.CreateAsync(newRole);
+
+            if (!result.Succeeded)
+                return BadRequest(result.Errors);
+
+            return Ok(new { message = "Role added successfully" });
+        }
+
+        [HttpPost("assign-role")]
+        public async Task<IActionResult> AssignRole(AssignRoleRequestDto model)
+        {
+            var user = await _userManager.FindByEmailAsync(model.Email);
+
+            if (user == null)
+                return BadRequest("User not found");
+
+            var result = await _userManager.AddToRoleAsync(user, model.Role);
+
+            if (result.Succeeded)
+                return Ok(new { message = "Role assigned successfully" });
+
+            return BadRequest(result.Errors);
         }
 
         /*[Authorize]

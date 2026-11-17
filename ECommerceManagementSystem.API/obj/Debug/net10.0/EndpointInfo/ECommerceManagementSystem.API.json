@@ -143,6 +143,18 @@
         }
       }
     },
+    "/api/Admin": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Auth/register": {
       "post": {
         "tags": [
@@ -207,8 +219,8 @@
         }
       }
     },
-    "/api/Auth/me": {
-      "get": {
+    "/api/Auth/add-role": {
+      "post": {
         "tags": [
           "Auth"
         ],
@@ -216,17 +228,49 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ClaimsPrincipal"
+                "$ref": "#/components/schemas/AddRoleRequestDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/ClaimsPrincipal"
+                "$ref": "#/components/schemas/AddRoleRequestDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/ClaimsPrincipal"
+                "$ref": "#/components/schemas/AddRoleRequestDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Auth/assign-role": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AssignRoleRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AssignRoleRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AssignRoleRequestDto"
               }
             }
           },
@@ -589,6 +633,18 @@
           }
         }
       }
+    },
+    "/api/UserContoller": {
+      "get": {
+        "tags": [
+          "UserContoller"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -658,154 +714,29 @@
           }
         }
       },
-      "Claim": {
+      "AddRoleRequestDto": {
+        "required": [
+          "role"
+        ],
         "type": "object",
         "properties": {
-          "issuer": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "originalIssuer": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "properties": {
-            "type": [
-              "null",
-              "object"
-            ],
-            "additionalProperties": {
-              "type": "string"
-            }
-          },
-          "subject": {
-            "$ref": "#/components/schemas/ClaimsIdentity"
-          },
-          "type": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "value": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "valueType": {
-            "type": [
-              "null",
-              "string"
-            ]
+          "role": {
+            "type": "string"
           }
         }
       },
-      "ClaimsIdentity": {
+      "AssignRoleRequestDto": {
+        "required": [
+          "email",
+          "role"
+        ],
         "type": "object",
         "properties": {
-          "authenticationType": {
-            "type": [
-              "null",
-              "string"
-            ]
+          "email": {
+            "type": "string"
           },
-          "isAuthenticated": {
-            "type": "boolean"
-          },
-          "actor": {
-            "oneOf": [
-              {
-                "type": "null"
-              },
-              {
-                "$ref": "#/components/schemas/ClaimsIdentity"
-              }
-            ]
-          },
-          "bootstrapContext": { },
-          "claims": {
-            "type": [
-              "null",
-              "array"
-            ],
-            "items": {
-              "$ref": "#/components/schemas/Claim"
-            }
-          },
-          "label": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "name": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "nameClaimType": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "roleClaimType": {
-            "type": [
-              "null",
-              "string"
-            ]
-          }
-        }
-      },
-      "ClaimsPrincipal": {
-        "type": "object",
-        "properties": {
-          "claims": {
-            "type": [
-              "null",
-              "array"
-            ],
-            "items": {
-              "$ref": "#/components/schemas/Claim"
-            }
-          },
-          "identities": {
-            "type": [
-              "null",
-              "array"
-            ],
-            "items": {
-              "$ref": "#/components/schemas/ClaimsIdentity"
-            }
-          },
-          "identity": {
-            "$ref": "#/components/schemas/IIdentity"
-          }
-        }
-      },
-      "IIdentity": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "authenticationType": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "isAuthenticated": {
-            "type": "boolean"
+          "role": {
+            "type": "string"
           }
         }
       },
@@ -930,6 +861,13 @@
           }
         }
       }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "Json Web Token"
+      }
     }
   },
   "tags": [
@@ -940,6 +878,9 @@
       "name": "Address"
     },
     {
+      "name": "Admin"
+    },
+    {
       "name": "Auth"
     },
     {
@@ -947,6 +888,9 @@
     },
     {
       "name": "Product"
+    },
+    {
+      "name": "UserContoller"
     }
   ]
 }

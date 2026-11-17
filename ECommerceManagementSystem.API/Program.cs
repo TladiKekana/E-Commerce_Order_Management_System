@@ -1,5 +1,6 @@
 
 using ECommerceManagementSystem.API.Extensions;
+using ECommerceManagementSystem.API.OpenApi;
 using ECommerceManagementSystem.Domain.Entities;
 using ECommerceManagementSystem.Infrastructure.Data;
 using FluentValidation;
@@ -24,7 +25,6 @@ namespace ECommerceManagementSystem.API
 
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-            builder.Services.AddOpenApi();
 
             builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(
                     builder.Configuration.GetConnectionString("DefaultConnection"),
@@ -57,11 +57,17 @@ namespace ECommerceManagementSystem.API
                     ValidIssuer = jwtSettings["Issuer"],
                     ValidAudience = jwtSettings["Audience"],
                     IssuerSigningKey = new SymmetricSecurityKey(key),
-                    ClockSkew = TimeSpan.Zero
+                    ClockSkew = TimeSpan.Zero,
+                    RoleClaimType = "role" // Matches standard JWT role claim
                 };
             });
 
             builder.Services.AddAuthorization();
+
+            builder.Services.AddOpenApi(options =>
+            {
+                options.AddDocumentTransformer<BearerSecuritySchemeTransformer>();
+            });
 
             builder.Services.AddApplicationServices();
             builder.Services.AddDtoValidators();
@@ -75,6 +81,19 @@ namespace ECommerceManagementSystem.API
             {
                 app.MapOpenApi();
                 app.MapScalarApiReference();
+                /*app.MapScalarApiReference(options => 
+                {
+                    options.Title = "E-Commerce Management System";
+                    options.DarkMode = true;
+                    options.DefaultHttpClient = new(ScalarTarget.CSharp, ScalarClient.HttpClient);
+                    options.CustomCss = "";
+                    options.AddPreferredSecuritySchemes("Bearer")
+                    .AddHttpAuthentication("Bearer", auth =>
+                    {
+                        auth.Token = "Jwtsample.fldjfdf.dlsfjsd";
+                    })
+                    .EnablePersistentAuthentication();
+                });*/
             }
 
             app.UseHttpsRedirection();
