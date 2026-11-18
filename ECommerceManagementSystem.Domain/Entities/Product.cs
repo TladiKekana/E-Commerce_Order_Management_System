@@ -18,10 +18,11 @@ namespace ECommerceManagementSystem.Domain.Entities
         public DateTime Updated_At { get; set; }
 
         //Navigation Properties
-        public Category Category { get; set; }
-        public Supplier Supplier { get; set; }
-        public OrderItem OrderItem { get; set; }
-        public Inventory Inventory { get; set; }
+        public Category Category { get; set; } = null!;
+        public Supplier Supplier { get; set; } = null!;
+        public OrderItem OrderItem { get; set; } = null!;
+        public Inventory Inventory { get; set; } = null!;
+        public CartItem? CartItem { get; set; }
         public ICollection<ProductImage> ProductImages { get; set; } = new List<ProductImage>();
     }
 }

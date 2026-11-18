@@ -20,6 +20,8 @@ namespace ECommerceManagementSystem.Domain.Entities
 
         // Navigation Properties
         //public Role? Role { get; set; }
+
+        public Cart Cart { get; set; } = null!;
         public ICollection<Order> Orders { get; set; } = new List<Order>();
         public ICollection<Address> Addresses { get; set; } = new List<Address>();
         public ICollection<Inventory_Transaction> Inventory_Transactions { get; set; } = new List<Inventory_Transaction>();

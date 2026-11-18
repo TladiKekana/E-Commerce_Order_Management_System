@@ -22,6 +22,8 @@ namespace ECommerceManagementSystem.Infrastructure.Data
         //public DbSet<ApplicationUser> Users { get; set; }
         //public DbSet<Role> Roles { get; set; }
         public DbSet<Shipment> Shipments { get; set; }
+        public DbSet<Cart> Carts { get; set; }
+        public DbSet<CartItem> CartItems { get; set; }
 
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
@@ -101,6 +103,17 @@ namespace ECommerceManagementSystem.Infrastructure.Data
                 entity.HasKey(o => o.Order_Id);
                 entity.Property(o => o.Total_Amount).HasColumnType("decimal(18,2)");
             });
+            // Configure Cart Table
+            modelBuilder.Entity<Cart>(entity => 
+            {
+                entity.HasKey(c => c.Cart_Id);
+            });
+            // Configure CartItem Table
+            modelBuilder.Entity<CartItem>(entity =>
+            {
+                entity.HasKey(ci => ci.CartItem_Id);
+            });
+
             // Configure User table
             /*modelBuilder.Entity<ApplicationUser>(entity =>
             {
@@ -208,6 +221,27 @@ namespace ECommerceManagementSystem.Infrastructure.Data
                 .WithMany(a => a.Orders)
                 .HasForeignKey(o => o.Address_Id)
                 .OnDelete(DeleteBehavior.Cascade); // Automatically deletes Orders if Customer is deleted
+
+            // CartItem(dependant entity) and Cart(principal entity) one to many relationship
+            modelBuilder.Entity<CartItem>()
+                .HasOne(ci => ci.Cart)
+                .WithMany(c => c.CartItems)
+                .HasForeignKey(ci => ci.Cart_Id)
+                .OnDelete(DeleteBehavior.Cascade); // Automatically deletes Orders if Customer is deleted
+
+            // User(principal entity) and Cart(dependant entity) one to one relationship
+            modelBuilder.Entity<ApplicationUser>()
+                .HasOne(u => u.Cart)
+                .WithOne(c => c.User)
+                .HasForeignKey<Cart>(c => c.User_Id)
+                .OnDelete(DeleteBehavior.Cascade); // Automatically deletes OrderItem if Product is deleted
+
+            // Product(principal entity) and CartItem(dependant entity) one to one relationship
+            modelBuilder.Entity<Product>()
+                .HasOne(p => p.CartItem)
+                .WithOne(ci => ci.Product)
+                .HasForeignKey<CartItem>(ci => ci.Product_Id)
+                .OnDelete(DeleteBehavior.Cascade); // Automatically deletes OrderItem if Product is deleted
         }
     }
 }

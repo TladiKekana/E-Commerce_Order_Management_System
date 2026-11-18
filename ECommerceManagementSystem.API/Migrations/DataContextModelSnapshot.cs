@@ -174,6 +174,52 @@ namespace ECommerceManagementSystem.API.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("ECommerceManagementSystem.Domain.Entities.Cart", b =>
+                {
+                    b.Property<int>("Cart_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Cart_Id"));
+
+                    b.Property<int>("User_Id")
+                        .HasColumnType("int");
+
+                    b.HasKey("Cart_Id");
+
+                    b.HasIndex("User_Id")
+                        .IsUnique();
+
+                    b.ToTable("Carts");
+                });
+
+            modelBuilder.Entity("ECommerceManagementSystem.Domain.Entities.CartItem", b =>
+                {
+                    b.Property<int>("CartItem_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CartItem_Id"));
+
+                    b.Property<int>("Cart_Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Product_Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("CartItem_Id");
+
+                    b.HasIndex("Cart_Id");
+
+                    b.HasIndex("Product_Id")
+                        .IsUnique();
+
+                    b.ToTable("CartItems");
+                });
+
             modelBuilder.Entity("ECommerceManagementSystem.Domain.Entities.Category", b =>
                 {
                     b.Property<int>("Category_Id")
@@ -636,6 +682,36 @@ namespace ECommerceManagementSystem.API.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("ECommerceManagementSystem.Domain.Entities.Cart", b =>
+                {
+                    b.HasOne("ECommerceManagementSystem.Domain.Entities.ApplicationUser", "User")
+                        .WithOne("Cart")
+                        .HasForeignKey("ECommerceManagementSystem.Domain.Entities.Cart", "User_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ECommerceManagementSystem.Domain.Entities.CartItem", b =>
+                {
+                    b.HasOne("ECommerceManagementSystem.Domain.Entities.Cart", "Cart")
+                        .WithMany("CartItems")
+                        .HasForeignKey("Cart_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ECommerceManagementSystem.Domain.Entities.Product", "Product")
+                        .WithOne("CartItem")
+                        .HasForeignKey("ECommerceManagementSystem.Domain.Entities.CartItem", "Product_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cart");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("ECommerceManagementSystem.Domain.Entities.Inventory", b =>
                 {
                     b.HasOne("ECommerceManagementSystem.Domain.Entities.Product", "Product")
@@ -816,9 +892,17 @@ namespace ECommerceManagementSystem.API.Migrations
                 {
                     b.Navigation("Addresses");
 
+                    b.Navigation("Cart")
+                        .IsRequired();
+
                     b.Navigation("Inventory_Transactions");
 
                     b.Navigation("Orders");
+                });
+
+            modelBuilder.Entity("ECommerceManagementSystem.Domain.Entities.Cart", b =>
+                {
+                    b.Navigation("CartItems");
                 });
 
             modelBuilder.Entity("ECommerceManagementSystem.Domain.Entities.Category", b =>
@@ -842,6 +926,8 @@ namespace ECommerceManagementSystem.API.Migrations
 
             modelBuilder.Entity("ECommerceManagementSystem.Domain.Entities.Product", b =>
                 {
+                    b.Navigation("CartItem");
+
                     b.Navigation("Inventory")
                         .IsRequired();
 
