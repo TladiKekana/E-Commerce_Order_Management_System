@@ -987,6 +987,7 @@
       },
       "ECommerceManagementSystem.Application/1.0.0": {
         "dependencies": {
+          "ECommerceManagementSystem.Domain": "1.0.0",
           "FluentValidation.DependencyInjectionExtensions": "12.2.0"
         },
         "runtime": {

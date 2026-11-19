@@ -15,4 +15,8 @@
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ECommerceManagementSystem.Domain\ECommerceManagementSystem.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

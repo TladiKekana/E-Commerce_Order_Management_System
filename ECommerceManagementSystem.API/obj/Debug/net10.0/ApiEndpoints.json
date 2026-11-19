@@ -147,6 +147,48 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ECommerceManagementSystem.API.Controllers.CartController",
+    "Method": "GetCart",
+    "RelativePath": "api/Cart",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ECommerceManagementSystem.API.Controllers.CartController",
+    "Method": "AddCartItem",
+    "RelativePath": "api/Cart",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "ECommerceManagementSystem.Application.DTOs.AddCartItemDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ECommerceManagementSystem.API.Controllers.CartController",
+    "Method": "RemoveCartItem",
+    "RelativePath": "api/Cart",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ECommerceManagementSystem.API.Controllers.CategoryController",
     "Method": "GetCategories",
     "RelativePath": "api/Category",
