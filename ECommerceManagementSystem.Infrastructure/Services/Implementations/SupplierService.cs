@@ -1,4 +1,5 @@
 ﻿using ECommerceManagementSystem.Domain.Entities;
+using ECommerceManagementSystem.Infrastructure.Helpers;
 using ECommerceManagementSystem.Infrastructure.Repositories.Interfaces;
 using ECommerceManagementSystem.Infrastructure.Services.Interfaces;
 using System;
@@ -30,9 +31,9 @@ namespace ECommerceManagementSystem.Infrastructure.Services.Implementations
             return await _repository.GetSupplierAsync(id);
         }
 
-        public async Task<List<Supplier>> GetSuppliersAsync()
+        public async Task<List<Supplier>> GetSuppliersAsync(SupplierQueryParameters query)
         {
-            return await _repository.GetSuppliersAsync();
+            return await _repository.GetSuppliersAsync(query);
         }
 
         public async Task<bool> UpdateSupplierAsync(Supplier supplier)

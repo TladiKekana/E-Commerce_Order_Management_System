@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using ECommerceManagementSystem.Infrastructure.Helpers;
 
 namespace ECommerceManagementSystem.Infrastructure.Repositories.Implementations
 {
@@ -42,9 +43,16 @@ namespace ECommerceManagementSystem.Infrastructure.Repositories.Implementations
             return await _context.Suppliers.FindAsync(id);
         }
 
-        public async Task<List<Supplier>> GetSuppliersAsync()
+        public async Task<List<Supplier>> GetSuppliersAsync(SupplierQueryParameters query)
         {
-            return await _context.Suppliers.ToListAsync();
+            var suppliers = _context.Suppliers.AsQueryable();
+
+            // Pagination
+            suppliers = suppliers
+                .Skip((query.PageNumber - 1)  * query.PageSize)
+                .Take(query.PageSize);
+
+            return await suppliers.ToListAsync();
         }
 
         public async Task<bool> UpdateSupplierAsync(Supplier supplier)
