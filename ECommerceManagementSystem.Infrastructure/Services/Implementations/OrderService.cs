@@ -15,6 +15,12 @@ namespace ECommerceManagementSystem.Infrastructure.Services.Implementations
         {
             _repository = repository;
         }
+
+        public async Task<Order?> CreateOrderFromCartAsync(int userId)
+        {
+            return await _repository.CreateOrderFromCartAsync(userId);
+        }
+
         public async Task<Order> AddOrderAsync(Order order)
         {
             return await _repository.AddOrderAsync(order);
@@ -25,14 +31,14 @@ namespace ECommerceManagementSystem.Infrastructure.Services.Implementations
             return await _repository.DeleteOrderAsync(id);
         }
 
-        public async Task<Order> GetOrderAsync(int id)
+        public async Task<Order> GetOrderAsync(int id, int userId)
         {
-            return await _repository.GetOrderAsync(id);
+            return await _repository.GetOrderAsync(id, userId);
         }
 
-        public async Task<List<Order>> GetOrdersAsync()
+        public async Task<List<Order>> GetOrdersAsync(int userId)
         {
-            return await _repository.GetOrdersAsync();
+            return await _repository.GetOrdersAsync(userId);
         }
 
         public async Task<bool> UpdateOrderAsync(Order order)

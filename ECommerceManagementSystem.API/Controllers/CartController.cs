@@ -34,7 +34,7 @@ namespace ECommerceManagementSystem.API.Controllers
 
             var cart = await _service.GetCartAsync(UserId);
 
-            return Ok(cart.ToResponseDto());
+            return Ok(cart.CartItems.ToResponseDto());
         }
 
         [HttpPost]
@@ -48,7 +48,7 @@ namespace ECommerceManagementSystem.API.Controllers
 
             var cart = await _service.AddCartItemAsync(UserId, request.ProductId, request.Quantity);
 
-            return Ok(cart.ToResponseDto());
+            return Ok(cart.CartItems.ToResponseDto());
         }
 
         [HttpDelete]

@@ -21,6 +21,21 @@ namespace ECommerceManagementSystem.Application.Validators
 
             RuleFor(u => u.Password)
                 .NotEmpty().WithMessage("First Name required");
+
+            RuleFor(u => u.StreetAddress)
+                .NotEmpty().WithMessage("Street address required");
+
+            RuleFor(u => u.City)
+                .NotEmpty().WithMessage("City Name required");
+
+            RuleFor(u => u.Province)
+                .NotEmpty().WithMessage("Province required");
+
+            RuleFor(u => u.PostalCode)
+                .NotEmpty().WithMessage("Postal code required");
+
+            RuleFor(u => u.Country)
+                .NotEmpty().WithMessage("Country Name required");
         }
     }
 }

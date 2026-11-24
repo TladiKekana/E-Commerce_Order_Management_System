@@ -35,7 +35,7 @@ namespace ECommerceManagementSystem.Infrastructure.Repositories.Implementations
             if(product == null)
                 return cart;
 
-            var cartItem = cart.CartItems.FirstOrDefault(ci => ci.Cart_Id == cart.Cart_Id);
+            var cartItem = cart.CartItems.FirstOrDefault(ci => ci.Product_Id == productId);
 
             if(cartItem == null)
             {
@@ -43,10 +43,12 @@ namespace ECommerceManagementSystem.Infrastructure.Repositories.Implementations
                 { 
                     Cart_Id = cart.Cart_Id,
                     Product_Id = productId,
-                    Quantity = quantity
+                    Quantity = quantity,
+                    UnitPrice = product.Price
                 };
 
                 cart.CartItems.Add(cartItem);
+                //_context.CartItems.Add(cartItem);
             }
             else
                 cartItem.Quantity += quantity;

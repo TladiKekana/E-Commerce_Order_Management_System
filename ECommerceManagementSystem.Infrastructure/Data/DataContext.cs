@@ -152,11 +152,11 @@ namespace ECommerceManagementSystem.Infrastructure.Data
                 .HasForeignKey<Inventory>(i => i.Product_Id)
                 .OnDelete(DeleteBehavior.Cascade); // Automatically deletes OrderItem if Product is deleted
 
-            // Product(principal entity) and OrderItems(dependant entity) one to one relationship
-            modelBuilder.Entity<Product>()
-                .HasOne(p => p.OrderItem)
-                .WithOne(oi => oi.Product)
-                .HasForeignKey<OrderItem>(oi => oi.Product_Id)
+            // Product(principal entity) and OrderItems(dependant entity) one to many relationship
+            modelBuilder.Entity<OrderItem>()
+                .HasOne(oi => oi.Product)
+                .WithMany(p => p.OrderItems)
+                .HasForeignKey(oi => oi.Product_Id)
                 .OnDelete(DeleteBehavior.Cascade); // Automatically deletes OrderItem if Product is deleted
 
             // OrderItems(dependant entity) and Orders(principal entity) one to many relationship
@@ -236,12 +236,18 @@ namespace ECommerceManagementSystem.Infrastructure.Data
                 .HasForeignKey<Cart>(c => c.User_Id)
                 .OnDelete(DeleteBehavior.Cascade); // Automatically deletes OrderItem if Product is deleted
 
-            // Product(principal entity) and CartItem(dependant entity) one to one relationship
-            modelBuilder.Entity<Product>()
-                .HasOne(p => p.CartItem)
-                .WithOne(ci => ci.Product)
-                .HasForeignKey<CartItem>(ci => ci.Product_Id)
-                .OnDelete(DeleteBehavior.Cascade); // Automatically deletes OrderItem if Product is deleted
+            // Product(principal entity) and CartItem(dependant entity) one to many relationship
+            modelBuilder.Entity<CartItem>()
+                .HasOne(ci => ci.Product)
+                .WithMany(p => p.CartItems)
+                .HasForeignKey(ci => ci.Product_Id)
+                .OnDelete(DeleteBehavior.Cascade); // Automatically deletes CartItem if Product is deleted
+
+            //modelBuilder.Entity<Product>()
+            //    .HasOne(p => p.CartItem)
+            //    .WithOne(ci => ci.Product)
+            //    .HasForeignKey<CartItem>(ci => ci.Product_Id)
+            //    .OnDelete(DeleteBehavior.Cascade); // Automatically deletes OrderItem if Product is deleted
         }
     }
 }

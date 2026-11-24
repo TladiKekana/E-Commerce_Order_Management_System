@@ -10,6 +10,7 @@ namespace ECommerceManagementSystem.Domain.Entities
         public int Cart_Id { get; set; }
         public int Product_Id { get; set; }
         public int Quantity { get; set; }
+        public Decimal UnitPrice { get; set; }
         public Product Product { get; set; } = null!;
         public Cart Cart { get; set; } = null!;
     }

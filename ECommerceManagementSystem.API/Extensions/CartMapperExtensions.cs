@@ -5,16 +5,20 @@ namespace ECommerceManagementSystem.API.Extensions
 {
     public static class CartMapperExtensions
     {
-        public static GetCartDto ToResponseDto(this Cart cart)
+        public static List<GetCartItemsDto> ToResponseDto(this List<CartItem> cartItems)
         {
-            return new GetCartDto
-                (
-                    cart.Cart_Id,
-                    cart.User.Id,
-                    cart.User.First_Name,
-                    cart.User.Last_Name,
-                    cart.CartItems
-                );
+            var response = new List<GetCartItemsDto>();
+
+            foreach (var item in cartItems)
+            {
+                response.Add(new GetCartItemsDto(
+                        item.Product_Id,
+                        item.UnitPrice,
+                        item.Quantity
+                    ));
+            }
+
+            return response;
         }
     }
 }

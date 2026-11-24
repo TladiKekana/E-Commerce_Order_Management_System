@@ -20,9 +20,9 @@ namespace ECommerceManagementSystem.Domain.Entities
         //Navigation Properties
         public Category Category { get; set; } = null!;
         public Supplier Supplier { get; set; } = null!;
-        public OrderItem OrderItem { get; set; } = null!;
+        public List<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
         public Inventory Inventory { get; set; } = null!;
-        public CartItem? CartItem { get; set; }
+        public List<CartItem> CartItems { get; set; } = new List<CartItem>();
         public ICollection<ProductImage> ProductImages { get; set; } = new List<ProductImage>();
     }
 }

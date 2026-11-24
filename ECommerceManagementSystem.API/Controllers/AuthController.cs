@@ -16,17 +16,19 @@ namespace ECommerceManagementSystem.API.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IValidateCredentialsService _service;
+        private readonly IAddressService _addressService;
         private readonly IConfiguration _configuration;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<ApplicationRole> _roleManager;
 
         public AuthController(IValidateCredentialsService service, IConfiguration configuration, 
-            UserManager<ApplicationUser> userManager, RoleManager<ApplicationRole> roleManager)
+            UserManager<ApplicationUser> userManager, RoleManager<ApplicationRole> roleManager, IAddressService addressService)
         {
             _service = service;
             _configuration = configuration;
             _userManager = userManager;
             _roleManager = roleManager;
+            _addressService = addressService;
         }
 
         [HttpPost("register")]
@@ -43,6 +45,20 @@ namespace ECommerceManagementSystem.API.Controllers
 
             if (!result.Succeeded)
                 return BadRequest(result.Errors);
+
+            var address = new Address
+            {
+                User_Id = user.Id,
+                Street_Address = model.StreetAddress,
+                City = model.City,
+                Province = model.Province,
+                Posta_Code = model.PostalCode,
+                Country = model.Country
+            };
+
+            var newAddress = await _addressService.AddAddressAsync(address);
+
+            user.Addresses.Add(newAddress);
 
             return Ok(new { Message = "User registered successfully." });
         }

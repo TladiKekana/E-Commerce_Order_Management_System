@@ -210,12 +210,14 @@ namespace ECommerceManagementSystem.API.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
+                    b.Property<decimal>("UnitPrice")
+                        .HasColumnType("decimal(18,2)");
+
                     b.HasKey("CartItem_Id");
 
                     b.HasIndex("Cart_Id");
 
-                    b.HasIndex("Product_Id")
-                        .IsUnique();
+                    b.HasIndex("Product_Id");
 
                     b.ToTable("CartItems");
                 });
@@ -330,8 +332,8 @@ namespace ECommerceManagementSystem.API.Migrations
                     b.Property<string>("Order_Number")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Status")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("Total_Amount")
                         .HasColumnType("decimal(18,2)");
@@ -372,8 +374,7 @@ namespace ECommerceManagementSystem.API.Migrations
 
                     b.HasIndex("Order_Id");
 
-                    b.HasIndex("Product_Id")
-                        .IsUnique();
+                    b.HasIndex("Product_Id");
 
                     b.ToTable("OrderItems");
                 });
@@ -702,8 +703,8 @@ namespace ECommerceManagementSystem.API.Migrations
                         .IsRequired();
 
                     b.HasOne("ECommerceManagementSystem.Domain.Entities.Product", "Product")
-                        .WithOne("CartItem")
-                        .HasForeignKey("ECommerceManagementSystem.Domain.Entities.CartItem", "Product_Id")
+                        .WithMany("CartItems")
+                        .HasForeignKey("Product_Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -770,8 +771,8 @@ namespace ECommerceManagementSystem.API.Migrations
                         .IsRequired();
 
                     b.HasOne("ECommerceManagementSystem.Domain.Entities.Product", "Product")
-                        .WithOne("OrderItem")
-                        .HasForeignKey("ECommerceManagementSystem.Domain.Entities.OrderItem", "Product_Id")
+                        .WithMany("OrderItems")
+                        .HasForeignKey("Product_Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -926,13 +927,12 @@ namespace ECommerceManagementSystem.API.Migrations
 
             modelBuilder.Entity("ECommerceManagementSystem.Domain.Entities.Product", b =>
                 {
-                    b.Navigation("CartItem");
+                    b.Navigation("CartItems");
 
                     b.Navigation("Inventory")
                         .IsRequired();
 
-                    b.Navigation("OrderItem")
-                        .IsRequired();
+                    b.Navigation("OrderItems");
 
                     b.Navigation("ProductImages");
                 });

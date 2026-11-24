@@ -1,5 +1,6 @@
-﻿using ECommerceManagementSystem.Infrastructure.Data;
-using ECommerceManagementSystem.Domain.Entities;
+﻿using ECommerceManagementSystem.Domain.Entities;
+using ECommerceManagementSystem.Domain.Enums;
+using ECommerceManagementSystem.Infrastructure.Data;
 using ECommerceManagementSystem.Infrastructure.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -16,6 +17,47 @@ namespace ECommerceManagementSystem.Infrastructure.Repositories.Implementations
         {
             _context = context;
         }
+
+        public async Task<Order?> CreateOrderFromCartAsync(int userId)
+        {
+            var address = await _context.Addresses.FirstOrDefaultAsync(a => a.User_Id == userId);
+
+            if (address == null)
+                return null;
+
+            var cart = await _context.Carts
+                .Include(c => c.CartItems)
+                .FirstOrDefaultAsync(c => c.User_Id == userId);
+
+            if (cart == null || !cart.CartItems.Any())
+                return null;
+
+            // Map CartItems to OrderItems
+            var order = new Order
+            {
+                User_Id = userId,
+                Status = OrderStatus.Confirmed,
+                Address_Id = address.Address_Id,
+                OrderItems = cart.CartItems.Select(ci => new OrderItem
+                {
+                    Product_Id = ci.Product_Id,
+                    Unit_Price = ci.UnitPrice,
+                    Quantity = ci.Quantity
+                }).ToList()
+            };
+
+            order.Total_Amount = order.OrderItems.Sum(oi => oi.Unit_Price * oi.Quantity);
+
+            _context.Orders.Add(order);
+
+            // Clear User's cart
+            _context.CartItems.RemoveRange(cart.CartItems);
+
+            await _context.SaveChangesAsync();
+
+            return order;
+        }
+
         public async Task<Order> AddOrderAsync(Order order)
         {
             _context.Orders.Add(order);
@@ -37,14 +79,18 @@ namespace ECommerceManagementSystem.Infrastructure.Repositories.Implementations
             return true;
         }
 
-        public async Task<Order> GetOrderAsync(int id)
+        public async Task<Order> GetOrderAsync(int id, int userId)
         {
-            return await _context.Orders.FindAsync(id);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == userId);
+
+            return user.Orders.FirstOrDefault(o => o.User_Id == userId);
         }
 
-        public async Task<List<Order>> GetOrdersAsync()
+        public async Task<List<Order>> GetOrdersAsync(int userId)
         {
-            return await _context.Orders.ToListAsync();
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == userId);
+
+            return user.Orders.ToList();
         }
 
         public async Task<bool> UpdateOrderAsync(Order order)

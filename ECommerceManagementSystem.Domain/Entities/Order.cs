@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ECommerceManagementSystem.Domain.Enums;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -11,7 +12,7 @@ namespace ECommerceManagementSystem.Domain.Entities
         public int Address_Id { get; set; }
         public string? Order_Number { get; set; }
         public DateTime Order_Date { get; set; }
-        public string? Status { get; set; }
+        public OrderStatus Status { get; set; } = OrderStatus.Pending;
         public Decimal Total_Amount { get; set; }
 
         // Navigation Properties

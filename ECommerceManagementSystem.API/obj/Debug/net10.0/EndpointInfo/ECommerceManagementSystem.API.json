@@ -542,6 +542,57 @@
         }
       }
     },
+    "/api/Order/{id}": {
+      "get": {
+        "tags": [
+          "Order"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Order": {
+      "get": {
+        "tags": [
+          "Order"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Order/checkout": {
+      "post": {
+        "tags": [
+          "Order"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Product": {
       "get": {
         "tags": [
@@ -1201,7 +1252,12 @@
           "first_Name",
           "last_Name",
           "email",
-          "password"
+          "password",
+          "streetAddress",
+          "city",
+          "province",
+          "postalCode",
+          "country"
         ],
         "type": "object",
         "properties": {
@@ -1215,6 +1271,21 @@
             "type": "string"
           },
           "password": {
+            "type": "string"
+          },
+          "streetAddress": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "province": {
+            "type": "string"
+          },
+          "postalCode": {
+            "type": "string"
+          },
+          "country": {
             "type": "string"
           }
         }
@@ -1246,6 +1317,9 @@
     },
     {
       "name": "Category"
+    },
+    {
+      "name": "Order"
     },
     {
       "name": "Product"

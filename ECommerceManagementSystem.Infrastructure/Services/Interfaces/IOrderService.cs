@@ -7,8 +7,9 @@ namespace ECommerceManagementSystem.Infrastructure.Services.Interfaces
 {
     public interface IOrderService
     {
-        Task<Order> GetOrderAsync(int id);
-        Task<List<Order>> GetOrdersAsync();
+        Task<Order?> CreateOrderFromCartAsync(int userId);
+        Task<Order> GetOrderAsync(int id, int userId);
+        Task<List<Order>> GetOrdersAsync(int userId);
         Task<Order> AddOrderAsync(Order order);
         Task<bool> UpdateOrderAsync(Order order);
         Task<bool> DeleteOrderAsync(int id);
