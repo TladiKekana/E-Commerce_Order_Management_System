@@ -75,7 +75,7 @@ namespace ECommerceManagementSystem.API.Controllers
         [HttpPost("cancel/{id}")]
         public async Task<IActionResult> CancelOrder(int id)
         {
-            var orderCancelled = await _service.DeleteOrderAsync(id);
+            var orderCancelled = await _service.CancelOrderAsync(id);
 
             if (!orderCancelled) return NotFound();
             

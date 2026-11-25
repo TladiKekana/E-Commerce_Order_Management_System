@@ -45,5 +45,10 @@ namespace ECommerceManagementSystem.Infrastructure.Services.Implementations
         {
             return await _repository.UpdateOrderAsync(order);
         }
+
+        public async Task<bool> CancelOrderAsync(int id)
+        {
+            return await _repository.CancelOrderAsync(id);
+        }
     }
 }

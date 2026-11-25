@@ -13,5 +13,6 @@ namespace ECommerceManagementSystem.Infrastructure.Services.Interfaces
         Task<Order> AddOrderAsync(Order order);
         Task<bool> UpdateOrderAsync(Order order);
         Task<bool> DeleteOrderAsync(int id);
+        Task<bool> CancelOrderAsync(int id);
     }
 }

@@ -82,6 +82,22 @@ namespace ECommerceManagementSystem.Infrastructure.Repositories.Implementations
             return true;
         }
 
+        public async Task<bool> CancelOrderAsync(int id)
+        {
+            var order = await _context.Orders.FindAsync(id);
+
+            if (order == null)
+                return false;
+
+            if (order.Status == OrderStatus.Shipped || order.Status == OrderStatus.Delivered || order.Status == OrderStatus.Cancelled)
+                return false;
+
+            order.Status = OrderStatus.Cancelled;
+            await _context.SaveChangesAsync();
+
+            return true;
+        }
+
         public async Task<Order> GetOrderAsync(int id, int userId)
         {
             var user = await _context.Users
