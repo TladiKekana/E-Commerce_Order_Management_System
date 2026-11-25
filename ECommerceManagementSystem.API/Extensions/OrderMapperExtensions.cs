@@ -16,7 +16,7 @@ namespace ECommerceManagementSystem.API.Extensions
                     //order.Address_Id,
                     order.Order_Number,
                     order.Order_Date,
-                    order.Status,
+                    order.Status.ToString(),
                     order.Total_Amount
                 );
         }
@@ -32,7 +32,7 @@ namespace ECommerceManagementSystem.API.Extensions
                         order.User_Id,
                         order.Order_Number,
                         order.Order_Date,
-                        order.Status,
+                        order.Status.ToString(),
                         order.Total_Amount
                         )
                     );

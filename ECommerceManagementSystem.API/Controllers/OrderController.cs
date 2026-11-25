@@ -70,49 +70,16 @@ namespace ECommerceManagementSystem.API.Controllers
                 return BadRequest("Failed to place order");
 
             return Ok(order.ToResponseDto());
+        }
 
-            /*using var transaction = await _context.Database.BeginTransactionAsync();
+        [HttpPost("cancel/{id}")]
+        public async Task<IActionResult> CancelOrder(int id)
+        {
+            var orderCancelled = await _service.DeleteOrderAsync(id);
 
-            try
-            {
-                if (!int.TryParse(User.FindFirstValue(ClaimTypes.NameIdentifier), out int userId))
-                    return BadRequest("Invalid User id.");
-
-                var cart = await _context.Carts
-                    .Include(c => c.CartItems)
-                    .FirstOrDefaultAsync(c => c.User_Id == userId);
-
-                if (cart == null || !cart.CartItems.Any())
-                    return BadRequest("Cannot create an order from an empty cart.");
-
-                // Map CartItems to OrderItems
-                var order = new Order
-                {
-                    User_Id = userId,
-                    Status = OrderStatus.Confirmed,
-                    OrderItems = cart.CartItems.Select(ci => new OrderItem
-                    {
-                        Product_Id = ci.Product_Id,
-                        Unit_Price = ci.UnitPrice,
-                        Quantity = ci.Quantity
-                    }).ToList()
-                };
-
-                order.Total_Amount = order.OrderItems.Sum(oi => oi.Unit_Price * oi.Quantity);
-
-                _context.Orders.Add(order);
-
-                // Clear User's cart
-                _context.CartItems.RemoveRange(cart.CartItems);
-
-                await _context.SaveChangesAsync();
-                await transaction.CommitAsync();
-            }
-            catch
-            {
-                await transaction.RollbackAsync();
-                throw;
-            }*/
+            if (!orderCancelled) return NotFound();
+            
+            return NoContent();
         }
     }
 }

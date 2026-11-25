@@ -73,6 +73,9 @@ namespace ECommerceManagementSystem.Infrastructure.Repositories.Implementations
             if (order == null)
                 return false;
 
+            if(order.Status == OrderStatus.Shipped || order.Status == OrderStatus.Delivered || order.Status == OrderStatus.Cancelled) 
+                return false;
+
             _context.Orders.Remove(order);
             await _context.SaveChangesAsync();
 
@@ -81,14 +84,18 @@ namespace ECommerceManagementSystem.Infrastructure.Repositories.Implementations
 
         public async Task<Order> GetOrderAsync(int id, int userId)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == userId);
+            var user = await _context.Users
+                .Include(u => u.Orders)
+                .FirstOrDefaultAsync(u => u.Id == userId);
 
-            return user.Orders.FirstOrDefault(o => o.User_Id == userId);
+            return user.Orders.FirstOrDefault(o => o.Order_Id == id);
         }
 
         public async Task<List<Order>> GetOrdersAsync(int userId)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == userId);
+            var user = await _context.Users
+                .Include(u => u.Orders)
+                .FirstOrDefaultAsync(u => u.Id == userId);
 
             return user.Orders.ToList();
         }

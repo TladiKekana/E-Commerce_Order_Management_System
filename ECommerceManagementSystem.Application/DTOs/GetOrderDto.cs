@@ -12,7 +12,7 @@ namespace ECommerceManagementSystem.Application.DTOs
         //int Address_Id,
         string Order_Number,
         DateTime Order_Date,
-        OrderStatus Status,
+        string Status,
         Decimal Total_Amount
     );
 }

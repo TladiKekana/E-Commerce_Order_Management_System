@@ -311,6 +311,22 @@
   },
   {
     "ContainingType": "ECommerceManagementSystem.API.Controllers.OrderController",
+    "Method": "CancelOrder",
+    "RelativePath": "api/Order/cancel/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ECommerceManagementSystem.API.Controllers.OrderController",
     "Method": "CreateOrderFromCart",
     "RelativePath": "api/Order/checkout",
     "HttpMethod": "POST",
