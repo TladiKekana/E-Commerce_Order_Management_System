@@ -271,10 +271,43 @@ namespace ECommerceManagementSystem.API.Migrations
 
                     b.HasKey("Inventory_Id");
 
-                    b.HasIndex("Product_Id")
-                        .IsUnique();
+                    b.ToTable("Inventory");
+                });
 
-                    b.ToTable("Inventories");
+            modelBuilder.Entity("ECommerceManagementSystem.Domain.Entities.InventoryItem", b =>
+                {
+                    b.Property<int>("InventoryItemId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("InventoryItemId"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("QuantityOnHand")
+                        .HasColumnType("int");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
+                    b.Property<string>("Sku")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("InventoryItemId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("InventoryItems");
                 });
 
             modelBuilder.Entity("ECommerceManagementSystem.Domain.Entities.Inventory_Transaction", b =>
@@ -285,23 +318,26 @@ namespace ECommerceManagementSystem.API.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Transaction_Id"));
 
-                    b.Property<int>("Inventory_Id")
+                    b.Property<int?>("Inventory_Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("InventotyItemId")
                         .HasColumnType("int");
 
                     b.Property<string>("Notes")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Quantity")
+                    b.Property<int?>("Product_Id")
                         .HasColumnType("int");
 
-                    b.Property<string>("Ref_Number")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("QuantityChanged")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("Transaction_Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Transaction_Type")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
 
                     b.Property<int>("User_Id")
                         .HasColumnType("int");
@@ -309,6 +345,10 @@ namespace ECommerceManagementSystem.API.Migrations
                     b.HasKey("Transaction_Id");
 
                     b.HasIndex("Inventory_Id");
+
+                    b.HasIndex("InventotyItemId");
+
+                    b.HasIndex("Product_Id");
 
                     b.HasIndex("User_Id");
 
@@ -439,9 +479,6 @@ namespace ECommerceManagementSystem.API.Migrations
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("Sku")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Status")
                         .HasColumnType("nvarchar(max)");
@@ -713,11 +750,11 @@ namespace ECommerceManagementSystem.API.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("ECommerceManagementSystem.Domain.Entities.Inventory", b =>
+            modelBuilder.Entity("ECommerceManagementSystem.Domain.Entities.InventoryItem", b =>
                 {
                     b.HasOne("ECommerceManagementSystem.Domain.Entities.Product", "Product")
-                        .WithOne("Inventory")
-                        .HasForeignKey("ECommerceManagementSystem.Domain.Entities.Inventory", "Product_Id")
+                        .WithMany("InventoryItems")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -726,11 +763,19 @@ namespace ECommerceManagementSystem.API.Migrations
 
             modelBuilder.Entity("ECommerceManagementSystem.Domain.Entities.Inventory_Transaction", b =>
                 {
-                    b.HasOne("ECommerceManagementSystem.Domain.Entities.Inventory", "Inventory")
+                    b.HasOne("ECommerceManagementSystem.Domain.Entities.Inventory", null)
                         .WithMany("Inventory_Transactions")
-                        .HasForeignKey("Inventory_Id")
+                        .HasForeignKey("Inventory_Id");
+
+                    b.HasOne("ECommerceManagementSystem.Domain.Entities.InventoryItem", "Item")
+                        .WithMany("InventoryTransactions")
+                        .HasForeignKey("InventotyItemId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("ECommerceManagementSystem.Domain.Entities.Product", null)
+                        .WithMany("InventoryTransactions")
+                        .HasForeignKey("Product_Id");
 
                     b.HasOne("ECommerceManagementSystem.Domain.Entities.ApplicationUser", "User")
                         .WithMany("Inventory_Transactions")
@@ -738,7 +783,7 @@ namespace ECommerceManagementSystem.API.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Inventory");
+                    b.Navigation("Item");
 
                     b.Navigation("User");
                 });
@@ -916,6 +961,11 @@ namespace ECommerceManagementSystem.API.Migrations
                     b.Navigation("Inventory_Transactions");
                 });
 
+            modelBuilder.Entity("ECommerceManagementSystem.Domain.Entities.InventoryItem", b =>
+                {
+                    b.Navigation("InventoryTransactions");
+                });
+
             modelBuilder.Entity("ECommerceManagementSystem.Domain.Entities.Order", b =>
                 {
                     b.Navigation("OrderItems");
@@ -929,8 +979,9 @@ namespace ECommerceManagementSystem.API.Migrations
                 {
                     b.Navigation("CartItems");
 
-                    b.Navigation("Inventory")
-                        .IsRequired();
+                    b.Navigation("InventoryItems");
+
+                    b.Navigation("InventoryTransactions");
 
                     b.Navigation("OrderItems");
 

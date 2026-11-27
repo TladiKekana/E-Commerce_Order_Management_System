@@ -11,7 +11,6 @@ namespace ECommerceManagementSystem.Application.DTOs
         int Supplier_Id,
         string Name,
         string Description,
-        string Sku,
         Decimal Price,
         string Status
     );

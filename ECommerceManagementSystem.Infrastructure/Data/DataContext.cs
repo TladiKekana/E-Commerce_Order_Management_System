@@ -10,7 +10,7 @@ namespace ECommerceManagementSystem.Infrastructure.Data
     public class DataContext : IdentityDbContext<ApplicationUser, ApplicationRole, int>
     {
         public DbSet<Address> Addresses { get; set; }
-        public DbSet<Inventory> Inventories { get; set; }
+        //public DbSet<Inventory> Inventories { get; set; }
         public DbSet<Inventory_Transaction> Inventory_Transactions { get; set; }
         public DbSet<Payment> Payments { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }
@@ -24,6 +24,7 @@ namespace ECommerceManagementSystem.Infrastructure.Data
         public DbSet<Shipment> Shipments { get; set; }
         public DbSet<Cart> Carts { get; set; }
         public DbSet<CartItem> CartItems { get; set; }
+        public DbSet<InventoryItem> InventoryItems { get; set; }
 
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
@@ -113,6 +114,13 @@ namespace ECommerceManagementSystem.Infrastructure.Data
             {
                 entity.HasKey(ci => ci.CartItem_Id);
             });
+            // Configure InventoryItems Table
+            modelBuilder.Entity<InventoryItem>(entity =>
+            {
+                entity.HasKey(ii => ii.InventoryItemId);
+                entity.Property(ii => ii.Name).IsRequired().HasMaxLength(150);
+                entity.Property(ii => ii.RowVersion).IsRowVersion();
+            });
 
             // Configure User table
             /*modelBuilder.Entity<ApplicationUser>(entity =>
@@ -145,12 +153,19 @@ namespace ECommerceManagementSystem.Infrastructure.Data
                 .HasForeignKey(pi => pi.Product_Id)
                 .OnDelete(DeleteBehavior.Cascade); // Automatically deletes products if category is deleted
 
-            // Product(principal entity) and Inventory(dependant entity) one to one relationship
+            // Product(principal entity) and Inventory(dependant entity) one to many relationship
+            /*modelBuilder.Entity<Inventory>()
+                .HasMany(i => i.Products)
+                .WithOne(p => p.Inventory)
+                .HasForeignKey(i => i.Product_Id)
+                .OnDelete(DeleteBehavior.Cascade);
+
             modelBuilder.Entity<Product>()
                 .HasOne(p => p.Inventory)
                 .WithOne(i => i.Product)
                 .HasForeignKey<Inventory>(i => i.Product_Id)
                 .OnDelete(DeleteBehavior.Cascade); // Automatically deletes OrderItem if Product is deleted
+            */
 
             // Product(principal entity) and OrderItems(dependant entity) one to many relationship
             modelBuilder.Entity<OrderItem>()
@@ -187,12 +202,26 @@ namespace ECommerceManagementSystem.Infrastructure.Data
                 .HasForeignKey(s => s.Order_Id)
                 .OnDelete(DeleteBehavior.Cascade); // Automatically deletes Orders if Customer is deleted
 
-            // Inventory_Transaction(dependant entity) and Inventory(principal entity) one to many relationship
+            // Inventory_Transaction(dependant entity) and InventoryItem(principal entity) one to many relationship
             modelBuilder.Entity<Inventory_Transaction>()
+                .HasOne(it => it.Item)
+                .WithMany(ii => ii.InventoryTransactions)
+                .HasForeignKey(it => it.InventotyItemId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // InventoryItem(dependant entity) and Product(principal entity) one to many relationship
+            modelBuilder.Entity<InventoryItem>()
+                .HasOne(ii => ii.Product)
+                .WithMany(p => p.InventoryItems)
+                .HasForeignKey(ii => ii.ProductId);
+
+            // Inventory_Transaction(dependant entity) and Inventory(principal entity) one to many relationship
+            /*modelBuilder.Entity<Inventory_Transaction>()
                 .HasOne(it => it.Inventory)
                 .WithMany(i => i.Inventory_Transactions)
                 .HasForeignKey(it => it.Inventory_Id)
                 .OnDelete(DeleteBehavior.Cascade); // Automatically deletes Orders if Customer is deleted
+            */
 
             // Inventory_Transaction(dependant entity) and User(principal entity) one to many relationship
             modelBuilder.Entity<Inventory_Transaction>()

@@ -16,7 +16,6 @@ namespace ECommerceManagementSystem.API.Extensions
                     product.Supplier_Id,
                     product.Name,
                     product.Description,
-                    product.Sku,
                     product.Price,
                     product.Status
                 );
@@ -34,7 +33,6 @@ namespace ECommerceManagementSystem.API.Extensions
                         product.Supplier_Id,
                         product.Name,
                         product.Description,
-                        product.Sku,
                         product.Price,
                         product.Status
                     ));
@@ -53,7 +51,6 @@ namespace ECommerceManagementSystem.API.Extensions
                 Category_Id = request.Category_Id,
                 Supplier_Id = request.Supplier_Id,
                 Description = request.Description,
-                Sku = request.Sku,
                 Price = request.Price,
                 Status = request.Status
             };
@@ -67,7 +64,6 @@ namespace ECommerceManagementSystem.API.Extensions
                 Category_Id = request.Category_Id,
                 Supplier_Id = request.Supplier_Id,
                 Description = request.Description,
-                Sku = request.Sku,
                 Price = request.Price,
                 Status = request.Status
             };

@@ -11,7 +11,7 @@ namespace ECommerceManagementSystem.Domain.Entities
         public int Supplier_Id { get; set; }
         public string Name { get; set; } = string.Empty;
         public string? Description { get; set; }
-        public string? Sku { get; set; } // Unique Stock-Keeping Unit
+        //public string? Sku { get; set; } // Unique Stock-Keeping Unit
         public Decimal Price { get; set; }
         public string? Status { get; set; }
         public DateTime Created_At { get; set; }
@@ -21,8 +21,10 @@ namespace ECommerceManagementSystem.Domain.Entities
         public Category Category { get; set; } = null!;
         public Supplier Supplier { get; set; } = null!;
         public List<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
-        public Inventory Inventory { get; set; } = null!;
+        //public Inventory Inventory { get; set; } = null!;
         public List<CartItem> CartItems { get; set; } = new List<CartItem>();
         public ICollection<ProductImage> ProductImages { get; set; } = new List<ProductImage>();
+        public List<InventoryItem> InventoryItems { get; set; } = new List<InventoryItem>();
+        public ICollection<Inventory_Transaction> InventoryTransactions { get; set; } = new List<Inventory_Transaction>();
     }
 }

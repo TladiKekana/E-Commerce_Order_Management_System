@@ -14,7 +14,7 @@ namespace ECommerceManagementSystem.Domain.Entities
         public DateTime Last_Updated { get; set; }
 
         // Navigation properties
-        public Product Product { get; set; }
+        //public ICollection<Product> Products { get; set; } = new List<Product>();
         public ICollection<Inventory_Transaction> Inventory_Transactions { get; set; } = new List<Inventory_Transaction>();
     }
 }

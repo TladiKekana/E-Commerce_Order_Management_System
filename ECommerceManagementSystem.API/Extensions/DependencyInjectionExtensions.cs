@@ -17,7 +17,6 @@ namespace ECommerceManagementSystem.API.Extensions
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ISupplierRepository, SupplierRepository>();
             services.AddScoped<IAddressRepository, AddressRepository>();
-            services.AddScoped<IInventoryRepository, InventoryRepository>();
             services.AddScoped<IInventoryTransactionRepository, InventoryTransactionRepository>();
             services.AddScoped<IPaymentRepository, PaymentRepository>();
             services.AddScoped<IProductImageRepository, ProductImageRepository>();
@@ -34,7 +33,6 @@ namespace ECommerceManagementSystem.API.Extensions
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ISupplierService, SupplierService>();
             services.AddScoped<IAddressService, AddressService>();
-            services.AddScoped<IInventoryService, InventoryService>();
             services.AddScoped<IInventoryTransactionService, InventoryTransactionService>();
             services.AddScoped<IPaymentService, PaymentService>();
             services.AddScoped<IProductImageService, ProductImageService>();
