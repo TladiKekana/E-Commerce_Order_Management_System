@@ -344,7 +344,7 @@
   {
     "ContainingType": "ECommerceManagementSystem.API.Controllers.InventoryTransactionController",
     "Method": "GetHistoryForItem",
-    "RelativePath": "api/InventoryTransaction/item/{id}",
+    "RelativePath": "api/InventoryTransaction/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

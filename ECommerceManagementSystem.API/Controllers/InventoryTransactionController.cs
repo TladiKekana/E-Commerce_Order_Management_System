@@ -24,9 +24,14 @@ namespace ECommerceManagementSystem.API.Controllers
             _context = context;
         }
 
-        [HttpGet("item/{id}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetHistoryForItem(int id)
         {
+            var item = await _context.InventoryItems.FindAsync(id);
+
+            if(item == null)
+                return NotFound("InventoryItem Id not found");
+
             var history = await _context.Inventory_Transactions
                 .Where(it => it.InventotyItemId == id)
                 .OrderByDescending(it => it.Transaction_Date)
