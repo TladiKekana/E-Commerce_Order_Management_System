@@ -9,6 +9,7 @@ namespace ECommerceManagementSystem.Application.DTOs
     (
         int InventoryItemId,
         TransactionType Type,
+        int Quantity,
         string? ReferenceNote
     );
 }
